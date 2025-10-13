@@ -27,7 +27,7 @@ export default function App() {
     let currentIntersects = [];
 
     const socialLinks = {
-      "Github": "https://github.com/Lvly-00",
+      "GitHub": "https://github.com/Lvly-00",
       "LinkedIn": "https://www.linkedin.com/in/lovely-pintes-3b40962bb/",
       "Facebook": "https://www.facebook.com/lovely.pintes.2024",
 
@@ -135,6 +135,22 @@ export default function App() {
       pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
       pointer.y = - (e.clientY / window.innerHeight) * 2 + 1;
 
+    })
+
+    window.addEventListener("click", (e)=> {
+      if (currentIntersects.length > 0){
+        const object = currentIntersects[0].object;
+
+        Object.entries(socialLinks).forEach(([key, url]) => {
+          if (object.name.includes(key)){
+            const newWindow = window.open();
+            newWindow.opener = null;
+            newWindow.location = url;
+            newWindow.target = "_blank";
+            newWindow.rel = "noopener noreferrer";
+          }
+        })
+      }
     })
 
 
