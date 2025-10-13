@@ -22,8 +22,68 @@ export default function App() {
     const textureLoader = new THREE.TextureLoader();
 
     // Model Loader
-    const loader = new DRACOLoader();
-    loader.setDecoderPath('/examples/jsm/libs/draco');
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('draco/');
+
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
+
+    const textureMap = {
+      First: {
+        day: "textures/room/day/first_texture_set_day.webp",
+        night: "textures/room/day/first_texture_set_night.webp",
+      },
+      Second: {
+        day: "textures/room/day/second_texture_set_day.webp",
+        night: "textures/room/day/second_texture_set_night.webp",
+      },
+      Third: {
+        day: "textures/room/day/third_texture_set_day.webp",
+        night: "textures/room/day/third_texture_set_night.webp",
+      },
+      Fourth: {
+        day: "textures/room/day/fourth_texture_set_day.webp",
+        night: "textures/room/day/fourth_texture_set_night.webp",
+      },
+    };
+
+    const loadedTextures = {
+      day: {},
+      night: {},
+    };
+
+    Object.entries(textureMap).forEach(([key, paths]) => {
+      const dayTexture = textureLoader.load(paths.day);
+      const nightTexture = textureLoader.load(paths.night);
+
+      // Set texture properties (optional but recommended)
+      [dayTexture, nightTexture].forEach((t) => {
+        t.colorSpace = THREE.SRGBColorSpace;
+        t.wrapS = t.wrapT = THREE.RepeatWrapping;
+      });
+
+      loadedTextures.day[key] = dayTexture;
+      loadedTextures.night[key] = nightTexture;
+    });
+
+    loader.load("models/Room_Portfolio.glb", (glb) => {
+      glb.scene.traverse((child) => {
+        if (child.isMesh) {
+          Object.keys(textureMap).forEach((key) => {
+            if (child.name.includes(key)) {
+              const material = new THREE.MeshBasicMaterial({
+                map: loadedTextures.day[key],
+              });
+
+              child.material = material;
+            }
+          });
+        }
+      });
+
+      scene.add(glb.scene);
+    });
+
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
@@ -40,11 +100,11 @@ export default function App() {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Controls (after renderer is defined ✅)
+    // Controls (after renderer is defined )
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.update(); 
+    controls.update();
 
     // Cube setup
     const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -57,7 +117,7 @@ export default function App() {
       cube.rotation.x += 0.01;
       cube.rotation.y += 0.01;
 
-      
+
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     };
