@@ -18,6 +18,25 @@ export default function App() {
       height: window.innerHeight,
     };
 
+    // Fans rotation 
+    const yAxisFans = []
+    const xAxisFans = []
+
+
+    const raycasterObjects = [];
+    let currentIntersects = [];
+
+    const socialLinks = {
+      "Github": "https://github.com/Lvly-00",
+      "LinkedIn": "https://www.linkedin.com/in/lovely-pintes-3b40962bb/",
+      "Facebook": "https://www.facebook.com/lovely.pintes.2024",
+
+    }
+
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+
+
     // Loaders
     const textureLoader = new THREE.TextureLoader();
 
@@ -108,14 +127,24 @@ export default function App() {
     videoElement.play()
 
 
-     const videoTexture = new THREE.VideoTexture(videoElement)
-     videoTexture.colorSpace = THREE.SRGBColorSpace;
-     videoTexture.flipY = false;
+    const videoTexture = new THREE.VideoTexture(videoElement)
+    videoTexture.colorSpace = THREE.SRGBColorSpace;
+    videoTexture.flipY = false;
+
+    window.addEventListener("mousemove", (e) => {
+      pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointer.y = - (e.clientY / window.innerHeight) * 2 + 1;
+
+    })
 
 
     loader.load("models/Room_Portfolio.glb", (glb) => {
       glb.scene.traverse((child) => {
         if (child.isMesh) {
+          if (child.name.includes("Raycaster")) {
+            raycasterObjects.push(child);
+          }
+
           if (child.name.includes("Water")) {
             child.material = new THREE.MeshBasicMaterial({
               color: 0x558Bc8,
@@ -141,6 +170,14 @@ export default function App() {
 
                 child.material = material;
 
+                if (child.name.includes("Fan")) {
+                  if (child.name.includes("Fan_2") || child.name.includes("Fan_4")) {
+                    xAxisFans.push(child);
+                  } else {
+                    yAxisFans.push(child);
+                  }
+                }
+
                 if (child.material.map) {
                   child.material.map.minFilter = THREE.LinearFilter;
                 }
@@ -165,7 +202,11 @@ export default function App() {
       0.1,
       1000
     );
-    camera.position.z = 5;
+    camera.position.set(
+      29.567116827654726,
+      14.018476147584705,
+      31.37040363900147
+    );
     scene.add(camera);
 
     // Renderer setup
@@ -178,16 +219,60 @@ export default function App() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.update();
+    controls.target.set(
+      -0.08206262548844094,
+      3.3119233527087255,
+      -0.7433922282864018
+    );
 
 
 
     // Animation loop
-    const animate = () => {
+    const render = () => {
+      controls.update();
+
+      // console.log(camera.position)
+      // console.log("0000000000")
+      // console.log(controls.target)
+      // console.log("Raycaster objects:", raycasterObjects);
+
+
+      // Animate Fans
+      xAxisFans.forEach((fan) => {
+        fan.rotation.x += 0.04;
+      });
+
+      yAxisFans.forEach((fan) => {
+        fan.rotation.y += 0.04;
+      });
+
+      // Raycaster
+      raycaster.setFromCamera(pointer, camera);
+
+      // calculate objects intersecting the picking ray
+      currentIntersects = raycaster.intersectObjects(raycasterObjects);
+
+      for (let i = 0; i < currentIntersects.length; i++) {
+        // currentIntersects[i].object.material.color.set(0xff0000);
+      }
+
+      if (currentIntersects.length > 0) {
+        const currentIntersectObject = currentIntersects[0].object;
+
+        if (currentIntersectObject.name.includes("Pointer")) {
+          document.body.style.cursor = "pointer";
+        } else {
+          document.body.style.cursor = "default";
+        }
+      } else {
+        document.body.style.cursor = "default";
+      }
+
 
       renderer.render(scene, camera);
-      requestAnimationFrame(animate);
+      window.requestAnimationFrame(render);
     };
-    animate();
+    render();
 
     // Handle resizing
     const handleResize = () => {
