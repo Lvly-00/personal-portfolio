@@ -21,3 +21,43 @@
     left: 0;
     overflow: hidden;
 }
+
+// modal
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    z-index: 100;
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.modal-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-exit-button {
+    margin-top: 1.5rem;
+    cursor: pointer;
+    color: #aaa;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.modal-exit-button:hover {
+    color: #fff;
+}

@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { DRACOLoader } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
+import gsap from "gsap";
 
 export default function App() {
   const canvasRef = useRef();
@@ -17,6 +18,43 @@ export default function App() {
       width: window.innerWidth,
       height: window.innerHeight,
     };
+
+    const modals = {
+      work: document.querySelector(".work.modal"),
+      about: document.querySelector(".about.modal"),
+      contact: document.querySelector(".contact.modal"),
+    };
+
+    const showModal = (modal) => {
+      if (!modal) return;
+      modal.style.display = "flex";
+      gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" });
+    };
+
+    const hideModal = (modal) => {
+      if (!modal) return;
+      gsap.to(modal, {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => (modal.style.display = "none"),
+      });
+    };
+
+    //  click logic (replace with your raycaster trigger)
+    document.querySelector(".modal-title").addEventListener("click", () => showModal(modals.work));
+
+    // Exit buttons
+    const exitButtons = document.querySelectorAll(".modal-exit-button");
+    exitButtons.forEach((btn) => {
+      btn.addEventListener("touchend", () => {
+        const modal = btn.closest(".modal");
+        hideModal(modal);
+      });
+      btn.addEventListener("click", () => {
+        const modal = btn.closest(".modal");
+        hideModal(modal);
+      });
+    });
 
     // Fans rotation 
     const yAxisFans = []
@@ -137,19 +175,63 @@ export default function App() {
 
     })
 
-    window.addEventListener("click", (e)=> {
-      if (currentIntersects.length > 0){
+
+    window.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+
+      pointer.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+      pointer.y = - (e.touches[0].clientY / window.innerHeight) * 2 + 1;
+
+    }, { passive: false, })
+
+    window.addEventListener("touchend", (e) => {
+      e.preventDefault();
+
+      if (currentIntersects.length > 0) {
         const object = currentIntersects[0].object;
 
         Object.entries(socialLinks).forEach(([key, url]) => {
-          if (object.name.includes(key)){
+          if (object.name.includes(key)) {
             const newWindow = window.open();
             newWindow.opener = null;
             newWindow.location = url;
             newWindow.target = "_blank";
             newWindow.rel = "noopener noreferrer";
           }
-        })
+        });
+
+        if (object.name.includes("Work_Button")) {
+          showModal(modals.work);
+        } else if (object.name.includes("About_Button")) {
+          showModal(modals.about);
+        } else if (object.name.includes("Contact_Button")) {
+          showModal(modals.contact);
+        }
+      }
+    }, { passive: false });
+
+
+    window.addEventListener("click", (e) => {
+      if (currentIntersects.length > 0) {
+        const object = currentIntersects[0].object;
+
+        Object.entries(socialLinks).forEach(([key, url]) => {
+          if (object.name.includes(key)) {
+            const newWindow = window.open();
+            newWindow.opener = null;
+            newWindow.location = url;
+            newWindow.target = "_blank";
+            newWindow.rel = "noopener noreferrer";
+          }
+        });
+
+        if (object.name.includes("Work_Button")) {
+          showModal(modals.work)
+        } else if (object.name.includes("About_Button")) {
+          showModal(modals.about)
+        } else if (object.name.includes("Contact_Button")) {
+          showModal(modals.contact)
+        }
       }
     })
 
@@ -313,6 +395,22 @@ export default function App() {
   return (
     <div className="webgl-wrapper">
       <canvas id="experience-canvas" ref={canvasRef} />
+
+      <div className="work modal">
+        <button className="modal-title">Work</button>
+        <div className="modal-exit-button">Exit</div>
+      </div>
+
+      <div className="about modal">
+        <button className="modal-title">About</button>
+        <div className="modal-exit-button">Exit</div>
+      </div>
+
+      <div className="contact modal">
+        <button className="modal-title">Contact</button>
+        <div className="modal-exit-button">Exit</div>
+      </div>
+
     </div>
   );
 
