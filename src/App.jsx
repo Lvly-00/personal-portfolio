@@ -8,7 +8,6 @@ export default function App() {
   const canvasRef = useRef();
 
   useEffect(() => {
-    // Canvas reference
     const canvas = canvasRef.current;
 
     // Scene setup
@@ -20,10 +19,8 @@ export default function App() {
 
     // Loaders
     const textureLoader = new THREE.TextureLoader();
-
-    // Model Loader
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('draco/');
+    dracoLoader.setDecoderPath("draco/");
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
@@ -47,17 +44,14 @@ export default function App() {
       },
     };
 
-    const loadedTextures = {
-      day: {},
-      night: {},
-    };
+    const loadedTextures = { day: {}, night: {} };
 
     Object.entries(textureMap).forEach(([key, paths]) => {
       const dayTexture = textureLoader.load(paths.day);
       const nightTexture = textureLoader.load(paths.night);
 
-      // Set texture properties (optional but recommended)
       [dayTexture, nightTexture].forEach((t) => {
+        t.flipY = false;
         t.colorSpace = THREE.SRGBColorSpace;
         t.wrapS = t.wrapT = THREE.RepeatWrapping;
       });
@@ -71,11 +65,9 @@ export default function App() {
         if (child.isMesh) {
           Object.keys(textureMap).forEach((key) => {
             if (child.name.includes(key)) {
-              const material = new THREE.MeshBasicMaterial({
+              child.material = new THREE.MeshBasicMaterial({
                 map: loadedTextures.day[key],
               });
-
-              child.material = material;
             }
           });
         }
@@ -83,7 +75,6 @@ export default function App() {
 
       scene.add(glb.scene);
     });
-
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
@@ -100,24 +91,14 @@ export default function App() {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Controls (after renderer is defined )
+    // Controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.update();
-
-    // Cube setup
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshNormalMaterial();
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
 
     // Animation loop
     const animate = () => {
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-
-
+      controls.update();
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     };
@@ -127,10 +108,8 @@ export default function App() {
     const handleResize = () => {
       sizes.width = window.innerWidth;
       sizes.height = window.innerHeight;
-
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
-
       renderer.setSize(sizes.width, sizes.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
