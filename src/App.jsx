@@ -99,6 +99,19 @@ export default function App() {
       color: 0xffffff,
     })
 
+    const videoElement = document.createElement("video");
+    videoElement.src = "textures/video/Screen.mp4";
+    videoElement.loop = true;
+    videoElement.muted = true;
+    videoElement.playsInline = true;
+    videoElement.autoplay = true;
+    videoElement.play()
+
+
+     const videoTexture = new THREE.VideoTexture(videoElement)
+     videoTexture.colorSpace = THREE.SRGBColorSpace;
+     videoTexture.flipY = false;
+
 
     loader.load("models/Room_Portfolio.glb", (glb) => {
       glb.scene.traverse((child) => {
@@ -111,10 +124,14 @@ export default function App() {
               depthWrite: false,
             });
 
-          }else if (child.name.includes("Glass")) {
+          } else if (child.name.includes("Glass")) {
             child.material = glassMaterial;
           } else if (child.name.includes("Bubble")) {
             child.material = whiteMaterial;
+          } else if (child.name.includes("Screen")) {
+            child.material = new THREE.MeshBasicMaterial({
+              map: videoTexture,
+            });
           } else {
             Object.keys(textureMap).forEach((key) => {
               if (child.name.includes(key)) {
