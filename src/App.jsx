@@ -8,6 +8,7 @@ export default function App() {
   const canvasRef = useRef();
 
   useEffect(() => {
+    // Canvas reference
     const canvas = canvasRef.current;
 
     // Scene setup
@@ -19,11 +20,24 @@ export default function App() {
 
     // Loaders
     const textureLoader = new THREE.TextureLoader();
+
+    // Model Loader
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath("draco/");
+    dracoLoader.setDecoderPath('draco/');
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
+
+    const environmentMap = new THREE.CubeTextureLoader()
+      .setPath('textures/skybox/')
+      .load([
+        'px.webp',
+        'nx.webp',
+        'py.webp',
+        'py.webp',
+        'pz.webp',
+        'nz.webp',
+      ])
 
     const textureMap = {
       First: {
@@ -44,41 +58,92 @@ export default function App() {
       },
     };
 
-    const loadedTextures = { day: {}, night: {} };
+    const loadedTextures = {
+      day: {},
+      night: {},
+    };
 
     Object.entries(textureMap).forEach(([key, paths]) => {
       const dayTexture = textureLoader.load(paths.day);
-      const nightTexture = textureLoader.load(paths.night);
+      dayTexture.flipY = false;
+      loadedTextures.day[key] = dayTexture;
 
+      const nightTexture = textureLoader.load(paths.night);
+      nightTexture.flipY = false;
+      loadedTextures.night[key] = nightTexture;
+
+      // Set color properties 
       [dayTexture, nightTexture].forEach((t) => {
-        t.flipY = false;
         t.colorSpace = THREE.SRGBColorSpace;
         t.wrapS = t.wrapT = THREE.RepeatWrapping;
       });
 
-      loadedTextures.day[key] = dayTexture;
-      loadedTextures.night[key] = nightTexture;
     });
+
+    const glassMaterial = new THREE.MeshPhysicalMaterial({
+      transmission: 1,
+      opacity: 1,
+      metalness: 0,
+      roughness: 0,
+      ior: 1.5,
+      thickness: 0.01,
+      specularIntensity: 1,
+      envMap: environmentMap,
+      envMapIntensity: 1,
+      lightMapIntensity: 1,
+      depthWrite: false,
+      exposure: 1,
+    })
+
+    const whiteMaterial = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+    })
+
 
     loader.load("models/Room_Portfolio.glb", (glb) => {
       glb.scene.traverse((child) => {
         if (child.isMesh) {
-          Object.keys(textureMap).forEach((key) => {
-            if (child.name.includes(key)) {
-              child.material = new THREE.MeshBasicMaterial({
-                map: loadedTextures.day[key],
-              });
-            }
-          });
+          if (child.name.includes("Water")) {
+            child.material = new THREE.MeshBasicMaterial({
+              color: 0x558Bc8,
+              transparent: true,
+              opacity: 0.66,
+              depthWrite: false,
+            });
+
+          }else if (child.name.includes("Glass")) {
+            child.material = glassMaterial;
+          } else if (child.name.includes("Bubble")) {
+            child.material = whiteMaterial;
+          } else {
+            Object.keys(textureMap).forEach((key) => {
+              if (child.name.includes(key)) {
+                const material = new THREE.MeshBasicMaterial({
+                  map: loadedTextures.day[key],
+                });
+
+                child.material = material;
+
+                if (child.material.map) {
+                  child.material.map.minFilter = THREE.LinearFilter;
+                }
+              }
+
+
+            });
+          }
         }
+
+
       });
 
       scene.add(glb.scene);
     });
 
+
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
-      75,
+      35,
       sizes.width / sizes.height,
       0.1,
       1000
@@ -91,14 +156,17 @@ export default function App() {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Controls
+    // Controls (after renderer is defined )
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
+    controls.update();
+
+
 
     // Animation loop
     const animate = () => {
-      controls.update();
+
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     };
@@ -108,8 +176,10 @@ export default function App() {
     const handleResize = () => {
       sizes.width = window.innerWidth;
       sizes.height = window.innerHeight;
+
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
+
       renderer.setSize(sizes.width, sizes.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
@@ -127,4 +197,5 @@ export default function App() {
       <canvas id="experience-canvas" ref={canvasRef} />
     </div>
   );
+
 }
