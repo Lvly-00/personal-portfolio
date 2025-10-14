@@ -63,6 +63,7 @@ export default function App() {
 
     const raycasterObjects = [];
     let currentIntersects = [];
+    let currentHoveredObjects = null;
 
     const socialLinks = {
       "GitHub": "https://github.com/Lvly-00",
@@ -243,6 +244,12 @@ export default function App() {
             raycasterObjects.push(child);
           }
 
+          if (child.name.includes("Hover")) {
+            child.userData.initialScale = new THREE.Vector3().copy(child.scale)
+            child.userData.initialPosition = new THREE.Vector3().copy(child.position)
+            child.userData.initialRotation = new THREE.Euler().copy(child.rotation)
+          }
+
           if (child.name.includes("Water")) {
             child.material = new THREE.MeshBasicMaterial({
               color: 0x558Bc8,
@@ -323,6 +330,44 @@ export default function App() {
       -0.7433922282864018
     );
 
+    // Hovering objects Animation
+    function playHoverAnimation(object, isHovering) {
+      gsap.killTweensOf(object.scale);
+      gsap.killTweensOf(object.rotation);
+      gsap.killTweensOf(object.position);
+
+
+
+      if (isHovering) {
+        gsap.to(object.scale, {
+          x: object.userData.initialScale.x * 1.2,
+          y: object.userData.initialScale.y * 1.2,
+          z: object.userData.initialScale.z * 1.2,
+          duration: 0.5,
+          ease: "bounce.out(1.8)",
+        });
+        gsap.to(object.rotation, {
+          x: object.userData.initialRotation.x + Math.PI / 8,
+          duration: 0.5,
+          ease: "bounce.out(1.8)",
+
+        });
+      } else {
+        gsap.to(object.scale, {
+          x: object.userData.initialScale.x,
+          y: object.userData.initialScale.y,
+          z: object.userData.initialScale.z,
+          duration: 0.3,
+          ease: "bounce.out(1.8)",
+        });
+        gsap.to(object.rotation, {
+          x: object.userData.initialRotation.x,
+          duration: 0.3,
+          ease: "bounce.out(1.8)",
+
+        });
+      }
+    }
 
 
     // Animation loop
@@ -357,12 +402,27 @@ export default function App() {
       if (currentIntersects.length > 0) {
         const currentIntersectObject = currentIntersects[0].object;
 
+        if (currentIntersectObject.name.includes("Hover")) {
+          if (currentIntersectObject !== currentHoveredObjects) {
+
+            if (currentHoveredObjects) {
+              playHoverAnimation(currentHoveredObjects, false);
+            }
+            playHoverAnimation(currentIntersectObject, true);
+            currentHoveredObjects = currentIntersectObject;
+          }
+        }
+
         if (currentIntersectObject.name.includes("Pointer")) {
           document.body.style.cursor = "pointer";
         } else {
           document.body.style.cursor = "default";
         }
       } else {
+        if (currentHoveredObjects) {
+          playHoverAnimation(currentHoveredObjects, false);
+          currentHoveredObjects = null;
+        }
         document.body.style.cursor = "default";
       }
 
@@ -398,18 +458,88 @@ export default function App() {
 
       <div className="work modal">
         <button className="modal-title">Work</button>
-        <div className="modal-exit-button">Exit</div>
+        <button class="modal-exit-button">
+          <svg
+            width="98"
+            height="96"
+            viewBox="0 0 98 96"
+            class="exit-button-svg"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
+              fill="currentColor"
+            />
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
       </div>
 
       <div className="about modal">
         <button className="modal-title">About</button>
-        <div className="modal-exit-button">Exit</div>
-      </div>
+        <button class="modal-exit-button">
+          <svg
+            width="98"
+            height="96"
+            viewBox="0 0 98 96"
+            class="exit-button-svg"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
+              fill="currentColor"
+            />
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
+              fill="currentColor"
+            />
+          </svg>
+        </button>      </div>
 
       <div className="contact modal">
         <button className="modal-title">Contact</button>
-        <div className="modal-exit-button">Exit</div>
-      </div>
+        <button class="modal-exit-button">
+          <svg
+            width="98"
+            height="96"
+            viewBox="0 0 98 96"
+            class="exit-button-svg"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
+              fill="currentColor"
+            />
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
+              fill="currentColor"
+            />
+          </svg>
+        </button>      </div>
 
     </div>
   );
