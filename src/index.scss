@@ -1,10 +1,10 @@
-@use "./styles/fonts.scss";
+// @use "./styles/fonts.scss";
 @use "./styles/reset.scss";
 @use "./styles/variables.scss" as vars;
 @use "./styles/defaults.scss" as media;
 @font-face {
     font-family: 'Deutsch Gothic';
-    src: url('fonts/Deutsch-Gothic.woff2') format('woff2'), url('fonts/Deutsch-Gothic.woff') format('woff');
+    src: url('fonts/Deutsch-Gothic.woff') format('woff2'), url('fonts/Deutsch-Gothic.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -66,6 +66,9 @@
     font-display: swap;
 }
 
+// ---------------------------
+// Theme Maps
+// ---------------------------
 $themes: ( light: (base-dark-maroon: #5b1e25,
 base-maroon: #7a2f33,
 base-maroon-200: #c78b8f,
@@ -73,39 +76,51 @@ base-gold: #e6cfa9,
 base-light-maroon: #e8c5c8,
 header-text: #5b1e25,
 text: #090909,
-svgs: #7a2f33,
-),
+svgs: #7a2f33),
 dark: (base-dark-maroon: #e8c5c8,
 base-maroon: #5b1e25,
 base-maroon-200: #7a2f33,
 base-gold: #e6cfa9,
-base-light-maroon: #c78b8f,
+base-light-maroon: #c78c8f,
 header-text: #fdfdfd,
 text: #fdfdfd,
-svgs: #e6cfa9,
-),
-);
-// Theme mixins
+svgs: #e6cfa9));
+// ---------------------------
+// Themed Mixin
+// Outputs CSS variables for each theme
+// ---------------------------
 @mixin themed() {
     @each $theme,
-    $map in $themes {
+    $theme-map in $themes {
         .#{$theme}-theme & {
-            $theme-map: () !global;
             @each $key,
-            $value in $map {
-                $theme-map: map-merge($theme-map, ($key: $value, )) !global;
+            $value in $theme-map {
+                --#{$key}: #{$value};
             }
-            @content;
-            $theme-map: null !global;
+            @content; // content inside the theme block
         }
     }
 }
 
-@function t($key) {
-    @return map-get($theme-map,
-    $key);
+// ---------------------------
+// Example Usage
+// ---------------------------
+.my-element {
+    @include themed() {
+        color: var(--text);
+        background-color: var(--base-maroon);
+        border: 2px solid var(--base-gold);
+    }
 }
 
+// ---------------------------
+// Optional: Theme Switching
+// ---------------------------
+// Add 'light-theme' or 'dark-theme' class to <body> or root container
+// Example in HTML:
+// <body class="dark-theme">
+//   <div class="my-element">Hello</div>
+// </body>
 * {
     margin: 0;
     padding: 0;
