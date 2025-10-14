@@ -1517,8 +1517,8 @@ export default function App() {
     let currentHoveredObject = null;
 
     const socialLinks = {
-      GitHub: "https://github.com/andrewwoan/sooahkimsfolio",
-      YouTube: "https://youtu.be/AB6sulUMRGE",
+      GitHub: "https://github.com/Lvly-00",
+      YouTube: "https://www.linkedin.com/in/lovely-pintes-3b40962bb/",
       Twitter: "https://www.twitter.com/",
     };
 
@@ -2294,7 +2294,7 @@ export default function App() {
                 </div>
               </div>
 
-<div className="work-project">
+              <div className="work-project">
                 <div className="work-project-wrapper">
                   <div className="work-image-wrapper">
                     <img
