@@ -140,13 +140,13 @@ body {
 
 // Experience
 #experience {
-    position: fixed;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
     overflow: hidden;
     #experience-canvas {
+        touch-action: none !important;
         height: 100%;
         width: 100%;
         z-index: 2;
@@ -267,7 +267,7 @@ ul {
     display: none;
     z-index: 1000;
     overflow: auto;
-    pointer-events: all;
+    pointer-events: none;
     cursor: pointer;
 }
 

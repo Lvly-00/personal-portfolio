@@ -108,6 +108,8 @@ export default function App() {
       height: window.innerHeight,
     };
 
+
+
     const scene = new THREE.Scene();
     scene.background = new THREE.Color("#D9CAD1");
 
@@ -1154,7 +1156,6 @@ export default function App() {
 
     /**  -------------------------- Model and Mesh Setup -------------------------- */
 
-    // LOL DO NOT DO THIS USE A FUNCTION TO AUTOMATE THIS PROCESS HAHAHAAHAHAHAHAHAHA
     let fish;
     let coffeePosition;
     let hourHand;
@@ -1323,7 +1324,6 @@ export default function App() {
             child.userData.initialRotation = new THREE.Euler().copy(child.rotation);
           }
 
-          // LOL DO NOT DO THIS USE A FUNCTION TO AUTOMATE THIS PROCESS HAHAHAAHAHAHAHAHAHA
           if (child.name.includes("Hanging_Plank_1")) {
             plank1 = child;
             child.scale.set(0, 0, 1);
@@ -2020,6 +2020,7 @@ export default function App() {
         smokeMaterial.uniforms.uTime.value = elapsedTime;
       }
 
+      console.log(renderer.domElement); // should log your canvas element
 
       //Update Orbit Controls
       controls.update();
@@ -2914,7 +2915,14 @@ export default function App() {
       </div>
 
       <div id="experience">
-        <canvas id="experience-canvas" className="experience-canvas"></canvas>
+<canvas
+  id="experience-canvas"
+  style={{
+    width: '375px',
+    height: '667px',
+    touchAction: 'auto', // use camelCase for multi-word CSS properties
+  }}
+></canvas>
       </div>
     </div>
   );
