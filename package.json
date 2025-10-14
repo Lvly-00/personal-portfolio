@@ -4,7 +4,6 @@
     "version": "0.0.0",
     "type": "module",
     "homepage": "https://Lvly-00.github.io/personal-room-folio/",
-
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -12,14 +11,17 @@
         "preview": "vite preview",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist"
-
     },
     "dependencies": {
         "gsap": "^3.13.0",
+        "howler": "^2.2.4",
+        "include": "^1.1.0",
+        "include-media": "^2.0.0",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
         "sass": "^1.93.2",
-        "three": "^0.180.0"
+        "three": "^0.180.0",
+        "vite-plugin-glsl": "^1.5.4"
     },
     "devDependencies": {
         "@eslint/js": "^9.36.0",
