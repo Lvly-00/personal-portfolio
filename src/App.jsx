@@ -2194,10 +2194,237 @@ export default function App() {
 
       <div className="work modal">
         <div className="modal-wrapper">
-          <h1 className="modal-title">~ My Work ~</h1>
+          <h1 className="modal-title">~ My Projects ~</h1>
 
           <div className="modal-content">
             <div className="modal-content-wrapper">
+
+              <div className="work-project">
+                <div className="work-project-wrapper">
+                  <div className="work-image-wrapper">
+                    <img
+                      className="work-base-image"
+                      src="images/WIP.jpg"
+                      alt=""
+                      srcSet=""
+                    />
+                  </div>
+                  <div className="paragraph-section">
+                    <h2 className="modal-paragraph-header">
+                      <a
+                        href=""
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        LOELSKIEE
+                      </a>
+                    </h2>
+                    <p className="modal-paragraph-text">
+                      "LOELSKIEE Photography —A sleek and responsive website showcasing my photography
+                      and video editing services, featuring galleries, service packages, and booking
+                      information."
+                    </p>
+                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
+                      Github Repo: <a
+                        href="https://github.com/Lvly-00/LOELSKIEE-Portfolio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        https://github.com/Lvly-00/LOELSKIEE-Portfolio
+                      </a>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div className="work-project">
+                <div className="work-project-wrapper">
+                  <div className="work-image-wrapper">
+                    <img
+                      className="work-base-image"
+                      src="images/sleepywears.png"
+                      alt=""
+                      srcSet=""
+                    />
+                  </div>
+                  <div className="paragraph-section">
+                    <h2 className="modal-paragraph-header">
+                      <a
+                        href="https://sleepywear-frontend.onrender.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        SleepyWears
+                      </a>
+                    </h2>
+                    <p className="modal-paragraph-text">
+                      "SleepyWears is a comprehensive web application designed for small businesses to manage
+                      inventory, track income, and generate downloadable invoices. With an intuitive interface,
+                      users can monitor stock levels, record sales, analyze revenue trends, and easily create
+                      professional invoices for their customers, streamlining daily business operations."
+                    </p>
+                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
+                      Backend Github Repo: <a
+                        href="https://github.com/Lvly-00/Sleepywear-Backend"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >https://github.com/Lvly-00/Sleepywear-Backend</a>
+                    </p>
+                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
+                      Frontend Github Repo: <a
+                        href="https://github.com/Lvly-00/Sleepywear-Frontend"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >https://github.com/Lvly-00/Sleepywear-Frontend   </a>                 </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="work-project">
+                <div className="work-project-wrapper">
+                  <div className="work-image-wrapper">
+                    <img
+                      className="work-base-image"
+                      src="images/HB.png"
+                      alt=""
+                      srcSet=""
+                    />
+                  </div>
+                  <div className="paragraph-section">
+                    <h2 className="modal-paragraph-header">
+                      <a
+                        href="https://github.com/LVCCWAD/Hi_Baby-"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        Hi Baby!
+                      </a>
+                    </h2>
+                    <p className="modal-paragraph-text">
+                      "Hi Baby! — An e-commerce platform specializing in baby clothes, offering an
+                      easy-to-use shopping experience with product browsing, secure checkout, and
+                      order management for parents."
+                    </p>
+                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
+                      Github Repo: <a
+                        href="https://github.com/LVCCWAD/Hi_Baby-"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        https://github.com/LVCCWAD/Hi_Baby-
+                      </a>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div className="work-project">
+                <div className="work-project-wrapper">
+                  <div className="work-image-wrapper">
+                    <img
+                      className="work-base-image"
+                      src="images/Com.png"
+                      alt=""
+                      srcSet=""
+                    />
+                  </div>
+                  <div className="paragraph-section">
+                    <h2 className="modal-paragraph-header">
+                      <a
+                        href=""
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        Uniform Detection
+                      </a>
+                    </h2>
+                    <p className="modal-paragraph-text">
+                      L"Uniform Detection — A smart system that scans student IDs to verify authenticity
+                      and checks whether the uniform is complete. The system is disabled on wash days,
+                      as uniforms are not required during these days."
+                    </p>
+                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
+                      Github Repo: <a
+                        href="https://github.com/7078-cj/Uniform-Detection"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        https://github.com/7078-cj/Uniform-Detection
+                      </a>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div className="work-project">
+                <div className="work-project-wrapper">
+                  <div className="work-image-wrapper">
+                    <img
+                      className="work-base-image"
+                      src="images/AguhEd.png"
+                      alt=""
+                      srcSet=""
+                    />
+                  </div>
+                  <div className="paragraph-section">
+                    <h2 className="modal-paragraph-header">
+                      <a
+                        href=""
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        AguhEd
+                      </a>
+                    </h2>
+                    <p className="modal-paragraph-text">
+                      "Aguhed — An innovative platform designed to enhance learning through gesture
+                      control and AI-powered features. It supports sign language translation and
+                      interactive tools, creating a more inclusive and engaging experience for all
+                      users."
+                    </p>
+                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
+                      Github Repo: <a
+                        href="https://github.com/7078-cj/AguhED"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
+
+                      >
+                        https://github.com/7078-cj/AguhED
+                      </a>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <h2 className="modal-paragraph-header">──────── ✦ ────────</h2>
+
 
               <div className="work-project">
                 <div className="work-project-wrapper">
@@ -2230,7 +2457,7 @@ export default function App() {
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Video Editor: Francois Dunga,
                       Lovely Pintes,
-                      Nathaniel David,
+                      Nathaniel David
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Cast: Francois Dunga,
@@ -2241,7 +2468,7 @@ export default function App() {
                       Maffia Guaro,
                       Margarette Calumpiano,
                       Jilyanz Santillian,
-
+                      Job Bacani
                     </p>
                   </div>
                 </div>
@@ -2277,7 +2504,7 @@ export default function App() {
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Video Editor: Francois Dunga,
                       Lovely Pintes,
-                      Nathaniel David,
+                      Nathaniel David
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Cast: Francois Dunga,
@@ -2288,7 +2515,7 @@ export default function App() {
                       Maffia Guaro,
                       Margarette Calumpiano,
                       Jilyanz Santillian,
-
+                      Job Bacani
                     </p>
                   </div>
                 </div>
@@ -2299,7 +2526,7 @@ export default function App() {
                   <div className="work-image-wrapper">
                     <img
                       className="work-base-image"
-                      src="images/RIAM.webp"
+                      src="images/takeover.webp"
                       alt=""
                       srcSet=""
                     />
@@ -2307,24 +2534,29 @@ export default function App() {
                   <div className="paragraph-section">
                     <h2 className="modal-paragraph-header">
                       <a
-                        href="https://drive.google.com/drive/folders/1QqZQrz7KbAhhZjwX84hGcd7uG6FX80zK?fbclid=IwY2xjawNa4XJleHRuA2FlbQIxMQABHsakBsYS5JYCeXSr-po5ZtueRKOfG3fJNemQcDirA0Kas2pQuL5LHt4GjiMV_aem_NIGnsV4wh2rchEK3KsUFsw"
+                        href="https://www.facebook.com/share/v/1A8gTBG8fr/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline text-blue-600" style={{ color: 'inherit' }}
 
                       >
-                        Rat in a Maze
+                        Takeover
                       </a>
                     </h2>
                     <p className="modal-paragraph-text">
-                      "In 'Rat in a Maze,' a clever algorithm guides a virtual agent through a
-                      labyrinth of twists and turns. Amidst the maze, a mysterious disappearance
-                      draws the attention of Job, who must investigate what happened to Jamela.
-                      Combining logic, strategy, and suspense, every step uncovers clues that
-                      reveal the secrets hidden within the maze."                    </p>
+                      "Takeover explores the dual nature of AI in our world. On one side, it imagines a
+                      dystopian future where AI dominates unchecked, reshaping society in unforeseen and
+                      dangerous ways. On the other, it shows the incredible potential of AI when guided
+                      responsibly—solving global problems, enhancing human creativity, and empowering communities.
+                      Through a gripping narrative, the film challenges us to consider how our choices today will
+                      shape tomorrow’s technology-driven world."
+                    </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Video Editor: Francois Dunga,
-                      Lovely Pintes,
+                      Lovely Pintes
+                    </p>
+                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
+                      Camera Director:
                       Nathaniel David,
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
@@ -2332,10 +2564,6 @@ export default function App() {
                       Sofia Latina,
                       Amber Rosana,
                       Evangeline Angana,
-                      Lorlyn Boiser,
-                      Maffia Guaro,
-                      Margarette Calumpiano,
-                      Jilyanz Santillian,
 
                     </p>
                   </div>
