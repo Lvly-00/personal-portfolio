@@ -244,21 +244,29 @@ ul {
 .work-image-wrapper {
     width: 30%;
     overflow: hidden;
-    margin-bottom: 12px;
-    padding-top: 20px;
-    height: auto;
+    padding-bottom: 30px;
+    @include media.media("<=tablet") {
+        padding-bottom: 10px;
+    }
 }
 
 .work-image-wrapper img {
     max-width: 100%;
-    height: auto;
+    height: 100%;
+    width: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 @include media.media("<=tablet") {
+    .work-project-wrapper {
+        flex-direction: column;
+    }
     .work-image-wrapper {
-        height: auto;
+        width: 100%;
+    }
+    .paragraph-section {
+        width: 100%;
     }
 }
 
@@ -268,6 +276,18 @@ ul {
     border-radius: 24px;
     object-fit: cover;
     border: 6px solid vars.$base-maroon;
+}
+
+.work-project-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    height: auto;
+}
+
+.paragraph-section {
+    flex-grow: 1;
 }
 
 // Overlay
@@ -484,11 +504,6 @@ ul {
 //         padding-bottom: 24px;
 //     }
 // }
-.work-project-wrapper {
-    width: 100%;
-    height: auto;
-}
-
 .contact .modal-content-wrapper {
     overflow: visible;
 }
@@ -745,9 +760,8 @@ ul {
 .work {
     .work-project-wrapper {
         display: flex;
-        gap: 30px;
+        gap: 20px;
         align-items: flex-start;
-        margin-bottom: 40px;
     }
     .work-image-wrapper {
         flex: 0 0 40%;
@@ -771,7 +785,7 @@ ul {
     }
     @include media.media("<=tablet") {
         .work-project-wrapper {
-            flex-direction: column;
+            display: flex;
             gap: 15px;
         }
         .work-image-wrapper {
@@ -780,10 +794,11 @@ ul {
         }
         .modal-paragraph-header {
             text-align: left;
-            margin-top: 0;
+            margin-top: 10 px;
             font-size: 1.3rem;
         }
         .modal-paragraph-header-2 {
+            margin-top: 10px;
             font-size: 1.3rem;
         }
         .modal-paragraph-text {
@@ -840,6 +855,10 @@ ul {
     @include themed() {
         stroke: var(--svgs);
         color: var(--svgs);
+    }
+    @include media.media("<tablet") {
+        width: 50px;
+        height: 50px;
     }
 }
 
