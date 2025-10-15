@@ -82,7 +82,7 @@ const AboutMeModal = ({ onClose }) => {
                 />
               </div>
               <p className="list-text">
-                Our team proudly won **Champion** at the 4th Regional Cybersecurity Conference
+                Our team proudly won Champion at the 4th Regional Cybersecurity Conference
                 held at Holy Angel University, earning an impressive score of 3400 points.
                 It was an incredible experience that tested our technical skills, teamwork,
                 and problem-solving under pressure — a true reflection of our dedication to
@@ -101,7 +101,7 @@ const AboutMeModal = ({ onClose }) => {
                 />
               </div>
               <p className="list-text">
-                Our team proudly placed **37th** in the UCTF (University Capture The Flag) competition —
+                Our team proudly placed 37th in the UCTF (University Capture The Flag) competition —
                 a national-level cybersecurity event that tested our skills in areas such as cryptography,
                 web exploitation, reverse engineering, and forensics. Despite the tough competition, we
                 demonstrated persistence, collaboration, and continuous learning throughout the challenge.
