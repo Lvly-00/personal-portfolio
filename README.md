@@ -1,2 +1,126 @@
-# personal-room-folio
-A 3D interactive portfolio built with React and WebGL, featuring an immersive virtual room showcasing my photography, projects, and creative work.
+#  Personal Portfolio Website — My-Folio
+
+Welcome to my personal portfolio!  
+This website showcases my background, technical skills, projects, and professional experience.  
+It is built using **React** and designed to give potential employers, collaborators, or anyone interested in my work a clear view of who I am and what I can do.
+
+---
+
+##  Purpose
+
+The purpose of this portfolio is to provide a **professional yet personal platform** where I can display my work, skills, and achievements in an easily accessible way.  
+It serves as both a **dynamic resume** and an **interactive showcase** of my projects, allowing visitors to explore my technical capabilities and design sense.  
+The website is **user-friendly**, **responsive**, and **visually appealing**, reflecting both my creativity and technical expertise.
+
+---
+
+##  Portfolio Features
+
+This portfolio consists of several key sections:
+
+### 1. About Me 
+- Overview of who I am, my educational background, and interests.  
+- Includes a personal section highlighting my passions and goals beyond my technical profile.
+- A visual presentation of programming languages, frameworks, and tools I’m proficient in.
+  
+### 2. My Projects 
+- A showcase of my technical projects with descriptions, technologies used, and links to GitHub or live demos.  
+- Visitors can explore my work, approach, and coding style.
+
+### 3. Contact 
+- Allows visitors to reach out via contact form, email, or social links (LinkedIn, GitHub, etc.).  
+- Ensures easy communication and networking opportunities.
+- 
+### 4. Resume 
+- A downloadable **PDF version** of my professional resume.  
+- Summarizes my experience, accomplishments, and core skills for quick review.
+
+---
+
+## Technologies Used
+
+This personal portfolio was built using the following technologies and libraries:
+
+- **React 19** – Core JavaScript library for creating dynamic, component-based interfaces.  
+- **Vite 7** – Modern build tool for fast and efficient development.  
+- **Sass (SCSS)** – For advanced, modular styling with variables, nesting, and mixins.  
+- **Three.js** – Used for 3D rendering, interactive visuals, and immersive effects.  
+- **GSAP (GreenSock Animation Platform)** – For smooth, high-performance animations.  
+- **Howler.js** – For handling audio, sound effects, and background music.  
+- **include-media** – A Sass mixin library for clean, responsive design breakpoints.  
+- **vite-plugin-glsl** – Allows importing and using GLSL shaders within the Vite + React environment.  
+- **ESLint** – Ensures code quality and consistency following React best practices.  
+- **GitHub Pages** – For hosting and deploying the live version of the website.
+
+---
+
+## Features and Functionality
+
+- **Responsive Design:** Adapts seamlessly to all screen sizes (desktop, tablet, mobile).  
+- **Interactive Animations:** Smooth visual transitions powered by GSAP and Three.js.  
+- **Sound Integration:** Immersive audio experience managed with Howler.js.  
+- **Dark Mode:** Optional theme toggle for comfortable viewing.  
+- **Smooth Navigation:** Clean header and anchor-based routing for quick access across pages.  
+- **3D Elements:** Engaging, shader-powered visual effects to enhance interactivity.
+
+---
+
+## Setup Instructions
+
+Follow these steps to run the project locally:
+
+### Prerequisites
+Ensure that you have the following installed:
+- [Node.js](https://nodejs.org/)
+- npm or yarn
+
+### Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/Lvly-00/personal-portfolio.git
+
+2. Navigate to the project folder:
+      ```bash
+      cd personal-portfolio
+      
+3. Install dependencies:
+      ```bash
+      npm install
+
+4. Start the development server:
+      ```bash
+      npm run dev
+
+5. Open your browser and visit:
+         ```bash
+      http://localhost:5173/personal-portfolio/
+
+
+### Deployment
+1. Build the project for production:
+         ```bash
+      npm run build
+
+2. Deploy the built files:
+         ```bash
+      npm run deploy
+
+
+---
+
+## Live Demo
+You can explore the live version of the portfolio here:
+https://Lvly-00.github.io/personal-portfolio/
+
+## Demo Recording 
+You can watch the demo recording of the portfolio here:
+https://drive.google.com/drive/folders/1itLLtxExwJve9JH2jE-ekW0ZmpmCbTt_?usp=sharing
+
+---
+
+## Contact
+Feel free to connect with me:
+Email: lovelypintes@gmail.com
+LinkedIn: [linkedin.com/in/your-linkedin-profile](https://www.linkedin.com/in/lovely-pintes-3b40962bb/)
+Facebook: [github.com/Lvly-00](https://www.facebook.com/lovely.pintes.2024)
