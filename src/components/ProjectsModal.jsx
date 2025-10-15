@@ -33,14 +33,13 @@ const ProjectsModal = () => {
                                         </a>
                                         <a
                                             className="contact-link"
-                                            href="https://github.com/Lvly-00"
+                                            href="https://github.com/Lvly-00/LOELSKIEE-Portfolio"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <GitHubIcon />
 
                                         </a>
-
 
 
                                     </h2>
