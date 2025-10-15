@@ -346,6 +346,15 @@ export default function App() {
 
       loadingScreenButton.addEventListener("click", () => handleEnter(true));
       noSoundButton.addEventListener("click", () => handleEnter(false));
+
+      loadingScreenButton.addEventListener("touchstart", (e) => {
+        e.preventDefault(); 
+        handleEnter(true);
+      });
+      noSoundButton.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        handleEnter(false);
+      });
     };
 
     function playReveal() {

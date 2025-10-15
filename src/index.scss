@@ -4,7 +4,7 @@
 @use "./styles/defaults.scss" as media;
 @font-face {
     font-family: 'Deutsch Gothic';
-    src: url('fonts/Deutsch-Gothic.woff') format('woff2'), url('fonts/Deutsch-Gothic.woff') format('woff');
+    src: url('/fonts/Deutsch-Gothic.woff') format('woff2'), url('/fonts/Deutsch-Gothic.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: 'Myflora Personal Use';
-    src: url('fonts/MyfloraPersonalUse.woff2') format('woff2'), url('fonts/MyfloraPersonalUse.woff') format('woff');
+    src: url('/fonts/MyfloraPersonalUse.woff2') format('woff2'), url('/fonts/MyfloraPersonalUse.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: 'Apple Garamond';
-    src: url('fonts/AppleGaramond.woff2') format('woff2'), url('fonts/AppleGaramond.woff') format('woff');
+    src: url('/fonts/AppleGaramond.woff2') format('woff2'), url('/fonts/AppleGaramond.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -28,7 +28,7 @@
 
 @font-face {
     font-family: 'Apple Garamond';
-    src: url('fonts/AppleGaramond-BoldItalic.woff2') format('woff2'), url('fonts/AppleGaramond-BoldItalic.woff') format('woff');
+    src: url('/fonts/AppleGaramond-BoldItalic.woff2') format('woff2'), url('/fonts/AppleGaramond-BoldItalic.woff') format('woff');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -36,7 +36,7 @@
 
 @font-face {
     font-family: 'Apple Garamond';
-    src: url('fonts/AppleGaramond-Bold.woff2') format('woff2'), url('AppleGaramond-Bold.woff') format('woff');
+    src: url('/fonts/AppleGaramond-Bold.woff2') format('woff2'), url('/fonts/AppleGaramond-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -44,7 +44,7 @@
 
 @font-face {
     font-family: 'Apple Garamond';
-    src: url('fonts/AppleGaramond-Italic.woff2') format('woff2'), url('fonts/AppleGaramond-Italic.woff') format('woff');
+    src: url('/fonts/AppleGaramond-Italic.woff2') format('woff2'), url('/fonts/AppleGaramond-Italic.woff') format('woff');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -52,7 +52,7 @@
 
 @font-face {
     font-family: 'Apple Garamond';
-    src: url('fonts/AppleGaramondLight.woff2') format('woff2'), url('fonts/AppleGaramondLight.woff') format('woff');
+    src: url('/fonts/AppleGaramondLight.woff2') format('woff2'), url('/fonts/AppleGaramondLight.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -60,7 +60,7 @@
 
 @font-face {
     font-family: 'Apple Garamond';
-    src: url('fonts/AppleGaramondLight-Italic.woff2') format('woff2'), url('fonts/AppleGaramondLight-Italic.woff') format('woff');
+    src: url('/fonts/AppleGaramondLight-Italic.woff2') format('woff2'), url('/fonts/AppleGaramondLight-Italic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -69,7 +69,7 @@
 // ---------------------------
 // Theme Maps
 // ---------------------------
-$themes: ( light: ( base-dark-grey: #343434,
+$themes: ( light: (base-dark-grey: #343434,
 base-grey: #393E46,
 base-grey-200: #929AAB,
 base-gold: #EEEEEE,
@@ -77,7 +77,7 @@ base-light-grey: #F7F7F7,
 header-text: #343434,
 text: #090909,
 svgs: #393E46),
-dark: ( base-dark-grey: #343434,
+dark: (base-dark-grey: #343434,
 base-grey: #393E46,
 base-grey-200: #929AAB,
 base-gold: #EEEEEE,
@@ -97,14 +97,11 @@ svgs: #393E46));
             $value in $theme-map {
                 --#{$key}: #{$value};
             }
-            @content; // content inside the theme block
+            @content;
         }
     }
 }
 
-// ---------------------------
-// Example Usage
-// ---------------------------
 .my-element {
     @include themed() {
         color: var(--text);
@@ -120,7 +117,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: var(--base-gold, #FFF); // Fallback color
+    background-color: var(--base-gold, #FFF);
     color: var(--text, #000);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -306,13 +303,13 @@ ul {
 //Modals
 .modal {
     @include vars.centered;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 1200px;
     width: 90%;
-    max-height: 90vh;
+    max-height: 100vh;
     font-size: 2.2rem;
     z-index: 1001;
     padding: 30px;
@@ -323,6 +320,21 @@ ul {
     background-color: vars.$base-gold;
     scrollbar-width: thin;
     scrollbar-color: vars.$base-grey transparent;
+    // Make sure it stays readable and centered on small devices
+    @media (max-width: 820px) {
+        top: 50%;
+        left: 30%;
+        width: 90%;
+        padding: 20px;
+        font-size: 1.8rem;
+        border-width: 5px;
+    }
+    @media (max-width: 480px) {
+        width: 98%;
+        padding: 15px;
+        font-size: 1.6rem;
+        border-width: 4px;
+    }
 }
 
 .about {
@@ -426,6 +438,7 @@ ul {
 .modal-content {
     width: 100%;
     height: 700px;
+    max-height: fit-content;
     overflow: hidden;
     position: relative;
     -webkit-overflow-scrolling: touch;
