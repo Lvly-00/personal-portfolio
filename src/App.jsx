@@ -2222,8 +2222,8 @@ export default function App() {
                       </a>
                     </h2>
                     <p className="modal-paragraph-text">
-                     "LOELSKIEE Photography — A sleek, responsive website showcasing my photography 
-                     and video editing services with galleries, service packages, and booking info."
+                      "LOELSKIEE Photography — A sleek, responsive website showcasing my photography
+                      and video editing services with galleries, service packages, and booking info."
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Github Repo: <a
@@ -2265,8 +2265,8 @@ export default function App() {
                       </a>
                     </h2>
                     <p className="modal-paragraph-text">
-                      "SleepyWears is a web application that helps small businesses manage inventory, 
-                      track income, analyze revenue trends, and generate professional downloadable invoices 
+                      "SleepyWears is a web application that helps small businesses manage inventory,
+                      track income, analyze revenue trends, and generate professional downloadable invoices
                       with an intuitive interface."
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
@@ -2914,11 +2914,7 @@ export default function App() {
       <div id="experience">
         <canvas
           id="experience-canvas"
-          style={{
-            width: '375px',
-            height: '667px',
-            touchAction: 'auto',
-          }}
+
         ></canvas>
       </div>
     </div>

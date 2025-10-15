@@ -113,14 +113,18 @@ svgs: #e6cfa9));
     }
 }
 
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 // ---------------------------
 // Optional: Theme Switching
 // ---------------------------
-// Add 'light-theme' or 'dark-theme' class to <body> or root container
-// Example in HTML:
-// <body class="dark-theme">
-//   <div class="my-element">Hello</div>
-// </body>
 * {
     margin: 0;
     padding: 0;
