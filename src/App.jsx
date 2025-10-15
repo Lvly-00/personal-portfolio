@@ -2915,14 +2915,14 @@ export default function App() {
       </div>
 
       <div id="experience">
-<canvas
-  id="experience-canvas"
-  style={{
-    width: '375px',
-    height: '667px',
-    touchAction: 'auto', // use camelCase for multi-word CSS properties
-  }}
-></canvas>
+        <canvas
+          id="experience-canvas"
+          style={{
+            width: '375px',
+            height: '667px',
+            touchAction: 'auto',
+          }}
+        ></canvas>
       </div>
     </div>
   );

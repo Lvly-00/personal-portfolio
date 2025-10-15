@@ -127,10 +127,9 @@ svgs: #e6cfa9));
     box-sizing: border-box;
 }
 
-body {
-    overflow: hidden;
-}
-
+// body {
+//     overflow: hidden;
+// }
 :root {
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -146,7 +145,6 @@ body {
     left: 0;
     overflow: hidden;
     #experience-canvas {
-        touch-action: none !important;
         height: 100%;
         width: 100%;
         z-index: 2;
@@ -319,7 +317,7 @@ ul {
     border-radius: 5rem;
     color: vars.$base-dark-maroon;
     background-color: vars.$base-maroon-200;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(223, 196, 196, 0.24) 0px 3px 8px;
     @include media.media("<=tablet") {
         font-size: 1.5rem;
         padding: 10px 20px;
@@ -378,7 +376,7 @@ ul {
 
 .modal-content {
     width: 100%;
-    height: 600px;
+    height: 700px;
     overflow: hidden;
     position: relative;
     -webkit-overflow-scrolling: touch;
@@ -389,9 +387,9 @@ ul {
 }
 
 .work .modal-content {
-    height: 750px;
+    height: 550px;
     @include media.media("<=tablet") {
-        height: 600px;
+        height: 500px;
     }
 }
 
