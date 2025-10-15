@@ -13,6 +13,7 @@ const ContactModal = () => {
                 If you like coding, music, games, and food, let's connect!
               </h2>
               
+              
               <div className="contact-button-wrapper">
                 {/* Email Link */}
                 <a
@@ -26,6 +27,7 @@ const ContactModal = () => {
                     <path d="M656.85 209.817C608.726 166.348 527.66 150 400 150C272.34 150 191.272 166.348 143.15 209.817M656.85 209.817C700.01 248.804 716.666 309.608 716.666 400C716.666 591.177 642.156 650 400 650C157.843 650 83.333 591.177 83.333 400C83.333 309.608 99.9903 248.804 143.15 209.817M656.85 209.817L447.14 419.527C421.103 445.56 378.893 445.56 352.86 419.527L143.15 209.817" stroke="currentColor" strokeWidth="66.7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </a>
+                
                 
                 {/* GitHub Link */}
                 <a

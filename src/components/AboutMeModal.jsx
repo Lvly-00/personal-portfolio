@@ -64,6 +64,8 @@ const AboutMeModal = ({ onClose }) => {
                 work on improving my problem-solving skills and building real-world projects.
                 May or may not also catch me going for strolls around my neighbohrhood.
               </p>
+              
+           
 
               <h2 className="modal-divider">──────── ✦ ────────</h2>
 
@@ -158,4 +160,4 @@ const AboutMeModal = ({ onClose }) => {
   );
 };
 
-export default AboutMeModal;  
+export default AboutMeModal;
