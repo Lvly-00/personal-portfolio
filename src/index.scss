@@ -343,6 +343,18 @@ ul {
     }
 }
 
+.modal-divider {
+    color: black;
+    font-family: 'Deutsch Gothic', serif;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    @include media.media("<=tablet") {
+        font-size: 2.3rem;
+    }
+}
+
 .modal-paragraph-header {
     color: vars.$base-maroon;
     font-family: 'Deutsch Gothic', serif;
@@ -351,7 +363,7 @@ ul {
     margin-top: 24px;
     margin-bottom: 8px;
     @include media.media("<=tablet") {
-        font-size: 1.3rem;
+        font-size: 2.3rem;
     }
 }
 
@@ -951,4 +963,42 @@ ul {
     @include media.media("<=tablet") {
         font-size: 28px;
     }
+}
+
+.skills-section-header {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: vars.$base-light-maroon;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list-item {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: vars.$base-dark-maroon;
+}
+
+.skill-badge {
+    display: inline-block;
+    background-color: rgb(131, 6, 6);
+    color: vars.$base-gold;
+    padding: 3px 8px;
+    margin: 0 4px 4px 0;
+    border-radius: 4px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    text-transform: capitalize;
+}
+
+.skill-badge.soft-skill {
+    background-color: vars.$base-maroon-200;
+    color: vars.$base-dark-maroon;
 }
