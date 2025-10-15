@@ -383,14 +383,15 @@ ul {
     position: relative;
     -webkit-overflow-scrolling: touch;
     @include media.media("<=tablet") {
+        overflow: hidden;
         height: 350px;
     }
 }
 
 .work .modal-content {
-    height: 550px;
+    height: 750px;
     @include media.media("<=tablet") {
-        height: 500px;
+        height: 600px;
     }
 }
 
