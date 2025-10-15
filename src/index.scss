@@ -333,7 +333,8 @@ ul {
     padding: 10px 80px;
     border-radius: 5rem;
     color: vars.$base-dark-maroon;
-    background-color: vars.$base-maroon-200;
+    background-color: vars.$base-gold;
+    border: 8px solid vars.$base-maroon;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     @include media.media("<=tablet") {
         font-size: 1.5rem;
@@ -343,6 +344,7 @@ ul {
 }
 
 .modal-paragraph-header {
+    color: vars.$base-maroon;
     font-family: 'Deutsch Gothic', serif;
     text-align: center;
     font-size: 2.5rem;
@@ -365,6 +367,7 @@ ul {
 
 .modal-paragraph-text {
     font-size: 1.5rem;
+    color: #42151a;
     @include media.media("<=tablet") {
         font-size: 1.3rem;
     }
@@ -484,7 +487,7 @@ ul {
     top: -2.3rem;
     left: -2.3rem;
     border: 8px solid vars.$base-maroon;
-    background-color: vars.$base-light-maroon;
+    background-color: vars.$base-gold;
     padding: 15px;
     border-radius: 1.2rem;
     cursor: pointer;
@@ -846,14 +849,56 @@ ul {
     border-radius: 48px;
 }
 
+.loading-text {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: #e6dede;
+    font-size: 48px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: pulse 1.2s infinite ease-in-out;
+    text-align: center;
+    width: 100%;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+.loading-buttons {
+    @include vars.centered;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    &.hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+    }
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
 .loading-screen-button {
     font-family: 'Deutsch Gothic', serif;
-    @include vars.centered;
     background: #5b1e2500;
     color: #e6dede;
     padding: 12px 60px;
-    border-radius: 1.5rem;
-    font-size: 48px;
+    border: 8px solid vars.$base-maroon;
+    border-radius: 28px;
+    font-size: 36px;
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -866,24 +911,14 @@ ul {
         transform: scale(0.97);
         box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.7);
     }
-    @include media.media("<=tablet") {
-        font-size: 32px;
-        padding: 10px 40px;
-        letter-spacing: 1px;
-    }
 }
 
 .no-sound-button {
     font-family: 'Myflora Personal Use', serif;
-    @include vars.centered;
-    background-color: transparent;
+    background: transparent;
     border: none;
     color: #c4bebe;
-    position: absolute;
-    bottom: 15%;
-    left: 50%;
     font-size: 20px;
-    transform: translate(-50%, -50%);
     &:hover {
         color: #e6dede;
         cursor: pointer;

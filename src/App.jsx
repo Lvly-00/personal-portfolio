@@ -12,6 +12,12 @@ import smokeFragmentShader from "./shaders/smoke/fragment.glsl";
 import themeVertexShader from "./shaders/theme/vertex.glsl";
 import themeFragmentShader from "./shaders/theme/fragment.glsl";
 
+
+import ProjectsModal from "./components/ProjectsModal.jsx";
+import AboutMeModal from "./components/AboutMeModal.jsx";
+import ContactModal from "./components/ContactModal.jsx";
+import LoadingScreen from "./components/LoadingScreen.jsx";
+
 export default function App() {
   const canvasRef = useRef();
 
@@ -296,33 +302,31 @@ export default function App() {
     const manager = new THREE.LoadingManager();
 
     const loadingScreen = document.querySelector(".loading-screen");
+    const loadingText = document.querySelector(".loading-text");
+    const loadingButtons = document.querySelector(".loading-buttons");
     const loadingScreenButton = document.querySelector(".loading-screen-button");
     const noSoundButton = document.querySelector(".no-sound-button");
 
     manager.onLoad = function () {
-      loadingScreenButton.style.border = "8px solid #7a2f33";
-      loadingScreenButton.style.background = "#5b1e25";
-      loadingScreenButton.style.color = "#E6CFA9";
-      loadingScreenButton.style.boxShadow = "#0000003d 0px 3px 8px";
-      loadingScreenButton.textContent = "Enter!";
-      loadingScreenButton.style.cursor = "pointer";
-      loadingScreenButton.style.transition =
-        "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
-      let isDisabled = false;
+      // Hide loading text and show buttons
+      loadingText.style.display = "none";
+      loadingButtons.classList.remove("hidden");
+      loadingButtons.classList.add("visible");
 
+      let isDisabled = false;
       noSoundButton.textContent = "Enter without Sound :(";
 
       function handleEnter(withSound = true) {
         if (isDisabled) return;
 
-        noSoundButton.textContent = "";
-        loadingScreenButton.style.cursor = "default";
-        loadingScreenButton.style.border = "8px solid #5b1e25";
-        loadingScreenButton.style.background = "#7a2f33";
-        loadingScreenButton.style.color = "#E6CFA9";
-        loadingScreenButton.style.boxShadow = "none";
-        loadingScreenButton.textContent = "~ 1v1y ~";
-        loadingScreen.style.background = "#7a2f33";
+        noSoundButton.textContent = ""; 
+        loadingScreenButton.style.cursor = "default"; 
+        loadingScreenButton.style.border = "8px solid #5b1e25"; 
+        loadingScreenButton.style.background = "#7a2f33"; 
+        loadingScreenButton.style.color = "#E6CFA9"; 
+        loadingScreenButton.style.boxShadow = "none"; 
+        loadingScreenButton.textContent = "~ 1v1y ~"; 
+        loadingScreen.style.background = "#7a2f33"; 
         isDisabled = true;
 
         toggleFavicons();
@@ -330,7 +334,6 @@ export default function App() {
         if (!withSound) {
           isMuted = true;
           updateMuteState(true);
-
           soundOnSvg.style.display = "none";
           soundOffSvg.style.display = "block";
         } else {
@@ -340,29 +343,8 @@ export default function App() {
         playReveal();
       }
 
-      loadingScreenButton.addEventListener("mouseenter", () => {
-        loadingScreenButton.style.transform = "scale(1.3)";
-      });
-
-      loadingScreenButton.addEventListener("touchend", (e) => {
-        touchHappened = true;
-        e.preventDefault();
-        handleEnter();
-      });
-
-      loadingScreenButton.addEventListener("click", (e) => {
-        if (touchHappened) return;
-        handleEnter(true);
-      });
-
-      loadingScreenButton.addEventListener("mouseleave", () => {
-        loadingScreenButton.style.transform = "none";
-      });
-
-      noSoundButton.addEventListener("click", (e) => {
-        if (touchHappened) return;
-        handleEnter(false);
-      });
+      loadingScreenButton.addEventListener("click", () => handleEnter(true));
+      noSoundButton.addEventListener("click", () => handleEnter(false));
     };
 
     function playReveal() {
@@ -2107,19 +2089,7 @@ export default function App() {
   return (
     <div className="light-theme">
 
-      <div className="loading-screen">
-        <button className="loading-screen-button">
-          Loading...
-        </button>
-
-        <button className="no-sound-button">
-
-        </button>
-
-        <p className="desktop-instructions instructions">use left/right click and mouse wheel to navigate!</p>
-        <p className="mobile-instructions instructions">use one or two fingers to navigate!</p>
-      </div>
-
+      <LoadingScreen />
       <div className="overlay"></div>
 
       <button className="mute-toggle-button toggle-buttons">
@@ -2192,729 +2162,16 @@ export default function App() {
         </svg>
       </button>
 
-      <div className="work modal">
-        <div className="modal-wrapper">
-          <h1 className="modal-title">~ My Projects ~</h1>
-
-          <div className="modal-content">
-            <div className="modal-content-wrapper">
-
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/WIP.jpg"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href=""
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        LOELSKIEE
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      "LOELSKIEE Photography — A sleek, responsive website showcasing my photography
-                      and video editing services with galleries, service packages, and booking info."
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Github Repo: <a
-                        href="https://github.com/Lvly-00/LOELSKIEE-Portfolio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        https://github.com/Lvly-00/LOELSKIEE-Portfolio
-                      </a>
-                    </p>
-
-                  </div>
-                </div>
-              </div>
+      <ProjectsModal />
+      <AboutMeModal />
+      <ContactModal />
 
 
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/sleepywears.png"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href="https://sleepywear-frontend.onrender.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
 
-                      >
-                        SleepyWears
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      "SleepyWears is a web application that helps small businesses manage inventory,
-                      track income, analyze revenue trends, and generate professional downloadable invoices
-                      with an intuitive interface."
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Backend Github Repo: <a
-                        href="https://github.com/Lvly-00/Sleepywear-Backend"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >https://github.com/Lvly-00/Sleepywear-Backend</a>
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Frontend Github Repo: <a
-                        href="https://github.com/Lvly-00/Sleepywear-Frontend"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >https://github.com/Lvly-00/Sleepywear-Frontend   </a>                 </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/HB.png"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href="https://github.com/LVCCWAD/Hi_Baby-"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        Hi Baby!
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      "Hi Baby! — An e-commerce platform specializing in baby clothes, offering an
-                      easy-to-use shopping experience with product browsing, secure checkout, and
-                      order management for parents."
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Github Repo: <a
-                        href="https://github.com/LVCCWAD/Hi_Baby-"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        https://github.com/LVCCWAD/Hi_Baby-
-                      </a>
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/Com.png"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href=""
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        Uniform Detection
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      L"Uniform Detection — A smart system that scans student IDs to verify authenticity
-                      and checks whether the uniform is complete. The system is disabled on wash days,
-                      as uniforms are not required during these days."
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Github Repo: <a
-                        href="https://github.com/7078-cj/Uniform-Detection"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        https://github.com/7078-cj/Uniform-Detection
-                      </a>
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/AguhEd.png"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href=""
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        AguhEd
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      "Aguhed — An innovative platform designed to enhance learning through gesture
-                      control and AI-powered features. It supports sign language translation and
-                      interactive tools, creating a more inclusive and engaging experience for all
-                      users."
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Github Repo: <a
-                        href="https://github.com/7078-cj/AguhED"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        https://github.com/7078-cj/AguhED
-                      </a>
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-
-
-              <h2 className="modal-paragraph-header">──────── ✦ ────────</h2>
-
-
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/RIAM.webp"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href="https://drive.google.com/drive/folders/1QqZQrz7KbAhhZjwX84hGcd7uG6FX80zK?fbclid=IwY2xjawNa4XJleHRuA2FlbQIxMQABHsakBsYS5JYCeXSr-po5ZtueRKOfG3fJNemQcDirA0Kas2pQuL5LHt4GjiMV_aem_NIGnsV4wh2rchEK3KsUFsw"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        Rat in a Maze
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      "In 'Rat in a Maze,' a clever algorithm guides a virtual agent through a
-                      labyrinth of twists and turns. Amidst the maze, a mysterious disappearance
-                      draws the attention of Job, who must investigate what happened to Jamela.
-                      Combining logic, strategy, and suspense, every step uncovers clues that
-                      reveal the secrets hidden within the maze."                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Video Editor: Francois Dunga,
-                      Lovely Pintes,
-                      Nathaniel David
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Cast: Francois Dunga,
-                      Sofia Latina,
-                      Amber Rosana,
-                      Evangeline Angana,
-                      Lorlyn Boiser,
-                      Maffia Guaro,
-                      Margarette Calumpiano,
-                      Jilyanz Santillian,
-                      Job Bacani
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/piano.webp"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href="https://drive.google.com/drive/folders/1bnOhzptn2JIwy2215b5-784fZIgn6U67?fbclid=IwY2xjawNa6txleHRuA2FlbQIxMQABHhJ237NMW8zlwzCC68FaZq7GbIX0nds6Hv2ceV8X7GH_J8_ztsJEy4H8K8_K_aem_gIxyGeGYBJyXy-9h_NvyQA"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-                      >
-                        Case 1229
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      "Case 1229 picks up where 'Rat in a Maze' left off. Job returns to the labyrinth,
-                      but this time the stakes are higher: new twists, hidden passages, and cryptic
-                      clues point to a deeper mystery. As he navigates the maze, Job uncovers secrets
-                      about Jamela’s disappearance that challenge everything he thought he knew, blending
-                      logic, suspense, and a race against time to solve the case."
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Video Editor: Francois Dunga,
-                      Lovely Pintes,
-                      Nathaniel David
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Cast: Francois Dunga,
-                      Sofia Latina,
-                      Amber Rosana,
-                      Evangeline Angana,
-                      Lorlyn Boiser,
-                      Maffia Guaro,
-                      Margarette Calumpiano,
-                      Jilyanz Santillian,
-                      Job Bacani
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="work-project">
-                <div className="work-project-wrapper">
-                  <div className="work-image-wrapper">
-                    <img
-                      className="work-base-image"
-                      src="images/takeover.webp"
-                      alt=""
-                      srcSet=""
-                    />
-                  </div>
-                  <div className="paragraph-section">
-                    <h2 className="modal-paragraph-header">
-                      <a
-                        href="https://www.facebook.com/share/v/1A8gTBG8fr/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-blue-600" style={{ color: 'inherit' }}
-
-                      >
-                        Takeover
-                      </a>
-                    </h2>
-                    <p className="modal-paragraph-text">
-                      "Takeover explores the dual nature of AI in our world. On one side, it imagines a
-                      dystopian future where AI dominates unchecked, reshaping society in unforeseen and
-                      dangerous ways. On the other, it shows the incredible potential of AI when guided
-                      responsibly—solving global problems, enhancing human creativity, and empowering communities.
-                      Through a gripping narrative, the film challenges us to consider how our choices today will
-                      shape tomorrow’s technology-driven world."
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Video Editor: Francois Dunga,
-                      Lovely Pintes
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Camera Director:
-                      Nathaniel David,
-                    </p>
-                    <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
-                      Cast: Francois Dunga,
-                      Sofia Latina,
-                      Amber Rosana,
-                      Evangeline Angana,
-
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-        <button className="modal-exit-button">
-          <svg
-            width="98"
-            height="96"
-            viewBox="0 0 98 96"
-            className="exit-button-svg"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
-              fill="currentColor"
-            />
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-      </div>
-      <div className="about modal">
-        <div className="modal-wrapper">
-          <h1 className="modal-title">~ About Me ~</h1>
-
-          <div className="modal-content">
-            <div className="modal-content-wrapper">
-              <div className="paragraph-section">
-                <div className="image-wrapper">
-                  <img
-                    className="base-image"
-                    src="images/profile.webp"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-                <h2 className="modal-paragraph-header">
-                  Frontend Developer, Backend Developer, Artists, Animator, Video Editor
-                </h2>
-                <br></br>
-                <p className="modal-paragraph-text">
-                  <b>Lovely Heart Pintes</b>, but you can also call me
-                  Lovely! I'm currently a third-year student at La Verdad Christian College
-                  studying information systems. I love to take my combination of skills of
-                  technical and artsy skills to create beautiful things for the world that I am
-                  passionate about.
-                </p>
-                <p className="modal-paragraph-text sm-margin-top">
-                  In my free time you'll definitely catch me watching anime, J-drama and
-                  playing games. I also practice coding one or two hours a day and continuously
-                  work on improving my problem-solving skills and building real-world projects.
-                  May or may not also catch me going for strolls around my neighbohrhood.
-                </p>
-                <h2 className="modal-paragraph-header">──────── ✦ ────────</h2>
-
-
-                <h2 className="modal-paragraph-header">4th Regional Cybersecurity Conference</h2>
-                <div className="image-about-wrapper">
-                  <img
-                    className="base-image"
-                    src="images/CTF.webp"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-                <p className="list-text">
-                  Our team proudly won Champion at the 4th Regional Cybersecurity Conference
-                  held at Holy Angel University, earning an impressive score of 3400 points.
-                  It was an incredible experience that tested our technical skills, teamwork,
-                  and problem-solving under pressure — a true reflection of our dedication to
-                  cybersecurity excellence.
-                </p>
-
-                <br></br>
-                <h2 className="modal-paragraph-header">University Capture the Flag</h2>
-
-                <div className="image-about-wrapper">
-                  <img
-                    className="base-image"
-                    src="images/UCTF.webp"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-                <p className="list-text">
-                  Our team proudly placed 37th in the UCTF (University Capture The Flag) competition —
-                  a national-level cybersecurity event that tested our skills in areas such as cryptography,
-                  web exploitation, reverse engineering, and forensics. Despite the tough competition, we
-                  demonstrated persistence, collaboration, and continuous learning throughout the challenge.
-                </p>
-                <br></br>
-                <h2 className="modal-paragraph-header">IRCITE I.T. Marketing Challenge</h2>
-
-                <div className="image-about-wrapper">
-                  <img
-                    className="base-image"
-                    src="images/ITMarketing.webp"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-                <p className="list-text">
-                  Our team had the exciting opportunity to join the IRCITE I.T. Marketing Challenge,
-                  where we combined creativity, strategy, and technical knowledge to present an
-                  innovative marketing concept centered around technology and digital engagement.
-                </p>
-
-                <br></br>
-
-                <h2 className="modal-paragraph-header-2">Skills and Expertise:</h2>
-                <ul>
-                  <li className="list-text-2">
-                    Proficient in JavaScript, React, and Python, with experience in both frontend and backend development.
-                  </li>
-                  <li className="list-text-2">
-                    Skilled in UI/UX design, animation, and creative storytelling through digital art and visuals.
-                  </li>
-                  <li className="list-text-2">
-                    Passionate about continuous learning — from cybersecurity to interactive 3D web experiences.
-                  </li>
-                </ul>
-
-                <h2 className="modal-paragraph-header-2">Core Programming:</h2>
-                <ul>
-                  <li className="list-text-2">React.js → Frontend development with Vite + Mantine</li>
-                  <li className="list-text-2">Laravel / PHP → Backend web development, APIs</li>
-                  <li className="list-text-2">HTML / CSS / Tailwind → UI styling and responsive design</li>
-                  <li className="list-text-2">Databases & APIs (MySQL, REST APIs)</li>
-                  <li className="list-text-2">Python → Automation, scripting, and CTF challenges</li>
-                  <li className="list-text-2">C++ → Performance-heavy coding, algorithms, problem-solving</li>
-                  <li className="list-text-2">C# → Unity and application development</li>
-                </ul>
-
-                <h2 className="modal-paragraph-header-2">Cybersecurity:</h2>
-                <ul>
-                  <li className="list-text-2">
-                    <strong>Web Exploitation:</strong> SQL Injection, XSS, Command Injection, Authentication Bypass
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Cryptography:</strong> Classic Ciphers (Caesar, Vigenère), Modern Crypto (RSA, AES, ECC basics), Hash Cracking (MD5, SHA-1)
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Forensics:</strong> File Analysis, Packet Capture Analysis (Wireshark, PCAP), Steganography
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Reverse Engineering:</strong> Binary Analysis (Ghidra, IDA Free, Radare2), Decompiling & Debugging, Malware Basics
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Pwn/Exploitation:</strong> Buffer Overflow, Format String Exploits, Memory Corruption
-                  </li>
-                  <li className="list-text-2">
-                    <strong>OSINT:</strong> Social Media Reconnaissance, Public Data Gathering, Google Dorking
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Misc / General:</strong> Python Scripting, CTF Tools (CyberChef, Strings, Binwalk), Puzzle / Logic challenges
-                  </li>
-                </ul>
-
-                <h2 className="modal-paragraph-header-2">Design & Animation:</h2>
-                <ul>
-                  <li className="list-text-2">
-                    <strong>2D Art & Animation:</strong> Digital Drawing & Illustration, Character Design, Storyboarding, 2D Animation (frame-by-frame / motion)
-                    <em>Tools:</em> Krita, Photoshop, Illustrator, Toon Boom, After Effects
-                  </li>
-                  <li className="list-text-2">
-                    <strong>3D Modeling & Animation:</strong> Hard Surface Modeling, Organic Modeling, Texturing, Rigging, 3D Animation, Sculpting
-                    <em>Tools:</em> Blender, Maya, 3ds Max
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Visual Effects & Editing:</strong> Compositing, Motion Graphics, Particle Simulation, Green Screen, Cinematic Camera & Lighting, Video Editing
-                    <em>Tools:</em> After Effects, Premiere Pro, DaVinci Resolve, Nuke
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Creative Media Integration:</strong> 2D + 3D hybrid, VFX for coding/game projects, UI/UX Design, Animation for storytelling
-                  </li>
-                </ul>
-
-                <h2 className="modal-paragraph-header-2">Soft Skills:</h2>
-                <ul>
-                  <li className="list-text-2">
-                    <strong>Core Soft Skills:</strong> Teamwork, Problem-Solving, Creativity, Communication
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Growth & Work Skills:</strong> Adaptability, Time Management, Leadership, Critical Thinking, Resilience
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Professional Skills:</strong> Presentation Skills, Collaboration Tools (GitHub, Trello, Discord), Documentation, Attention to Detail
-                  </li>
-                  <li className="list-text-2">
-                    <strong>Personal Qualities:</strong> Curiosity, Self-Motivation, Open-Mindedness, Patience
-                  </li>
-                </ul>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <button className="modal-exit-button">
-          <svg
-            width="98"
-            height="96"
-            viewBox="0 0 98 96"
-            className="exit-button-svg"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
-              fill="currentColor"
-            />
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-      </div>
-      <div className="contact modal">
-        <div className="modal-wrapper">
-          <h1 className="modal-title">~ Say hello! ~</h1>
-
-          <div className="modal-content">
-            <div className="modal-content-wrapper">
-              <div className="paragraph-section">
-                <h2 className="modal-paragraph-header xsm-margin-top">
-                  If you like coding, music, games, and food, let's connect!
-                </h2>
-                <div className="contact-button-wrapper">
-                  <a
-                    className="contact-link"
-                    href="mailto:galacticabaddon@gmail.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <svg className="contact-svg mail" width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M656.85 209.817C608.726 166.348 527.66 150 400 150C272.34 150 191.272 166.348 143.15 209.817M656.85 209.817C700.01 248.804 716.666 309.608 716.666 400C716.666 591.177 642.156 650 400 650C157.843 650 83.333 591.177 83.333 400C83.333 309.608 99.9903 248.804 143.15 209.817M656.85 209.817L447.14 419.527C421.103 445.56 378.893 445.56 352.86 419.527L143.15 209.817" stroke="currentColor" strokeWidth="66.7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                  <a
-                    className="contact-link"
-                    href="https://github.com/Lvly-00"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <svg
-                      width="800"
-                      height="800"
-                      viewBox="0 0 800 800"
-                      fill="none"
-                      className="contact-svg github"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M700 400C700 565.687 565.687 700 400 700C234.315 700 100 565.687 100 400C100 234.315 234.315 100 400 100C565.687 100 700 234.315 700 400Z"
-                        stroke="currentColor"
-                        strokeWidth="66.6667"
-                      />
-                      <path
-                        d="M457.234 296.059C419.604 285.652 380.397 285.652 342.767 296.059C342.124 296.237 341.481 296.418 340.841 296.603C336.891 297.74 332.642 296.967 329.357 294.497C289.771 264.731 269.093 266.061 263.976 267.054C263.154 267.214 262.529 267.827 262.245 268.615C262.173 268.814 262.102 269.013 262.031 269.212C253.88 292.169 252.635 317.605 258.426 341.417C258.764 342.804 259.124 344.184 259.509 345.557C259.534 345.647 259.56 345.737 259.585 345.827C259.919 347.007 259.674 348.277 258.927 349.254C258.359 349.994 257.799 350.744 257.248 351.5C241.494 373.13 232.97 400.71 233.346 429.157C233.346 544.664 293.466 571.194 351.167 579.037L352.361 579.194C384.491 583.997 415.291 583.7 447.317 578.264L448.127 578.167C506.107 571.13 566.654 545.29 566.654 429.157C567.031 400.71 558.507 373.13 542.754 351.5C542.247 350.807 541.734 350.117 541.214 349.434L541.174 349.384C540.367 348.327 540.101 346.95 540.461 345.67C540.857 344.257 541.227 342.84 541.571 341.417C547.367 317.537 546.051 292.026 537.764 269.059C537.711 268.918 537.661 268.777 537.611 268.637C537.317 267.835 536.681 267.21 535.841 267.048C530.701 266.055 510.137 264.794 470.644 294.497C467.361 296.966 463.111 297.733 459.161 296.602C458.521 296.418 457.877 296.237 457.234 296.059Z"
-                        stroke="currentColor"
-                        strokeWidth="66.6667"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    className="contact-link"
-                    href="https://www.linkedin.com/in/lovely-pintes-3b40962bb/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <svg
-                      width="800"
-                      height="800"
-                      viewBox="0 0 800 800"
-                      className="contact-svg linkedin"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clipPath="url(#clip0_371_15)">
-                        <path
-                          d="M600 100C655.23 100 700 144.772 700 200V600C700 655.23 655.23 700 600 700H200C144.772 700 100 655.23 100 600V200C100 144.772 144.772 100 200 100H600ZM600 166.667H200C181.591 166.667 166.667 181.591 166.667 200V600C166.667 618.41 181.591 633.333 200 633.333H600C618.41 633.333 633.333 618.41 633.333 600V200C633.333 181.591 618.41 166.667 600 166.667ZM266.667 333.333C283.761 333.333 297.85 346.201 299.776 362.779L300 366.667V533.333C300 551.743 285.076 566.667 266.667 566.667C249.572 566.667 235.483 553.799 233.558 537.221L233.333 533.333V366.667C233.333 348.257 248.257 333.333 266.667 333.333ZM366.667 300C383.043 300 396.66 311.809 399.47 327.376C406.21 323.478 413.167 319.964 420.223 316.946C442.463 307.432 475.773 302.198 505.83 311.65C521.587 316.603 537.44 325.969 549.193 341.853C559.682 356.034 565.33 373.28 566.456 392.642L566.667 400V533.333C566.667 551.74 551.743 566.667 533.333 566.667C516.238 566.667 502.15 553.796 500.224 537.22L500 533.333V400C500 389.023 497.337 383.857 495.6 381.503C493.81 379.087 490.913 376.843 485.837 375.247C474.227 371.597 457.537 373.493 446.443 378.24C429.742 385.383 414.491 396.571 404.131 406.945L400 411.327V533.333C400 551.743 385.077 566.667 366.667 566.667C349.572 566.667 335.483 553.799 333.558 537.221L333.333 533.333V333.333C333.333 314.924 348.257 300 366.667 300ZM266.667 233.333C285.076 233.333 300 248.257 300 266.667C300 285.076 285.076 300 266.667 300C248.257 300 233.333 285.076 233.333 266.667C233.333 248.257 248.257 233.333 266.667 233.333Z"
-                          fill="currentColor"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_371_15">
-                          <rect width="800" height="800" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </a>
-
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button className="modal-exit-button">
-          <svg
-            width="98"
-            height="96"
-            viewBox="0 0 98 96"
-            className="exit-button-svg"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
-              fill="currentColor"
-            />
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-      </div>
 
       <div id="experience">
         <canvas
           id="experience-canvas"
-
         ></canvas>
       </div>
     </div>
