@@ -2020,7 +2020,6 @@ export default function App() {
         smokeMaterial.uniforms.uTime.value = elapsedTime;
       }
 
-      console.log(renderer.domElement); // should log your canvas element
 
       //Update Orbit Controls
       controls.update();
@@ -2223,8 +2222,8 @@ export default function App() {
                       </a>
                     </h2>
                     <p className="modal-paragraph-text">
-                      "LOELSKIEE Photography — A sleek, responsive website showcasing my photography
-                      and video editing services with galleries, service packages, and booking info."
+                     "LOELSKIEE Photography — A sleek, responsive website showcasing my photography 
+                     and video editing services with galleries, service packages, and booking info."
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Github Repo: <a
@@ -2266,8 +2265,8 @@ export default function App() {
                       </a>
                     </h2>
                     <p className="modal-paragraph-text">
-                      "SleepyWears is a web application that helps small businesses manage inventory,
-                      track income, analyze revenue trends, and generate professional downloadable invoices
+                      "SleepyWears is a web application that helps small businesses manage inventory, 
+                      track income, analyze revenue trends, and generate professional downloadable invoices 
                       with an intuitive interface."
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
