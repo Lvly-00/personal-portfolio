@@ -26,7 +26,6 @@ const AboutMeModal = ({ onClose }) => {
                 <span className="skill-badge">JavaScript</span>
                 <span className="skill-badge">React</span>
                 <span className="skill-badge">Python</span>
-                <span className="skill-badge">React.js</span>
                 <span className="skill-badge">Mantine</span>
                 <span className="skill-badge">C++</span>
                 <span className="skill-badge">Laravel</span>
@@ -35,7 +34,6 @@ const AboutMeModal = ({ onClose }) => {
                 <span className="skill-badge">CSS</span>
                 <span className="skill-badge">MySQL</span>
                 <span className="skill-badge">REST APIs</span>
-                <span className="skill-badge">Python</span>
                 <span className="skill-badge">C#</span>
 
                 <span className="skill-badge">Krita</span>
