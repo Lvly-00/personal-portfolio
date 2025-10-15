@@ -2223,9 +2223,8 @@ export default function App() {
                       </a>
                     </h2>
                     <p className="modal-paragraph-text">
-                      "LOELSKIEE Photography —A sleek and responsive website showcasing my photography
-                      and video editing services, featuring galleries, service packages, and booking
-                      information."
+                      "LOELSKIEE Photography — A sleek, responsive website showcasing my photography
+                      and video editing services with galleries, service packages, and booking info."
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Github Repo: <a
@@ -2267,10 +2266,9 @@ export default function App() {
                       </a>
                     </h2>
                     <p className="modal-paragraph-text">
-                      "SleepyWears is a comprehensive web application designed for small businesses to manage
-                      inventory, track income, and generate downloadable invoices. With an intuitive interface,
-                      users can monitor stock levels, record sales, analyze revenue trends, and easily create
-                      professional invoices for their customers, streamlining daily business operations."
+                      "SleepyWears is a web application that helps small businesses manage inventory,
+                      track income, analyze revenue trends, and generate professional downloadable invoices
+                      with an intuitive interface."
                     </p>
                     <p className="modal-paragraph-text sm-margin-top lg-margin-bottom  sm-font">
                       Backend Github Repo: <a
