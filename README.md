@@ -102,7 +102,7 @@ Ensure that you have the following installed:
          ```bash
       npm run build
 
-2. Deploy the built files:
+3. Deploy the built files:
          ```bash
       npm run deploy
 
@@ -121,6 +121,8 @@ https://drive.google.com/drive/folders/1itLLtxExwJve9JH2jE-ekW0ZmpmCbTt_?usp=sha
 
 ## Contact
 Feel free to connect with me:
-Email: lovelypintes@gmail.com
-LinkedIn: [linkedin.com/in/your-linkedin-profile](https://www.linkedin.com/in/lovely-pintes-3b40962bb/)
-Facebook: [github.com/Lvly-00](https://www.facebook.com/lovely.pintes.2024)
+
+- **Email:** lovelypintes@gmail.com  
+- **LinkedIn:** [linkedin.com/in/lovely-pintes-3b40962bb](https://www.linkedin.com/in/lovely-pintes-3b40962bb/)  
+- **Facebook:** [facebook.com/lovely.pintes.2024](https://www.facebook.com/lovely.pintes.2024)  
+- **GitHub:** [github.com/Lvly-00](https://github.com/Lvly-00)
