@@ -322,12 +322,12 @@ export default function App() {
 
         noSoundButton.textContent = "";
         loadingScreenButton.style.cursor = "default";
-        loadingScreenButton.style.border = "8px solid #5b1e25";
-        loadingScreenButton.style.background = "#7a2f33";
-        loadingScreenButton.style.color = "#E6CFA9";
+        loadingScreenButton.style.border = "8px solid #343434";
+        loadingScreenButton.style.background = "#393E46";
+        loadingScreenButton.style.color = "#EEEEEE";
         loadingScreenButton.style.boxShadow = "none";
         loadingScreenButton.textContent = "~ 1v1y ~";
-        loadingScreen.style.background = "#7a2f33";
+        loadingScreen.style.background = "#393E46";
         isDisabled = true;
 
         toggleFavicons();
@@ -1499,11 +1499,11 @@ export default function App() {
     let currentIntersects = [];
     let currentHoveredObject = null;
 
-    const socialLinks = {
-      GitHub: "https://github.com/Lvly-00",
-      YouTube: "https://www.linkedin.com/in/lovely-pintes-3b40962bb/",
-      Twitter: "https://www.twitter.com/",
-    };
+    // const socialLinks = {
+    //   GitHub: "https://github.com/Lvly-00",
+    //   YouTube: "https://www.linkedin.com/in/lovely-pintes-3b40962bb/",
+    //   Twitter: "https://www.twitter.com/",
+    // };
 
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
@@ -1653,15 +1653,15 @@ export default function App() {
           }
         });
 
-        Object.entries(socialLinks).forEach(([key, url]) => {
-          if (object.name.includes(key)) {
-            const newWindow = window.open();
-            newWindow.opener = null;
-            newWindow.location = url;
-            newWindow.target = "_blank";
-            newWindow.rel = "noopener noreferrer";
-          }
-        });
+        // Object.entries(socialLinks).forEach(([key, url]) => {
+        //   if (object.name.includes(key)) {
+        //     const newWindow = window.open();
+        //     newWindow.opener = null;
+        //     newWindow.location = url;
+        //     newWindow.target = "_blank";
+        //     newWindow.rel = "noopener noreferrer";
+        //   }
+        // });
 
         if (object.name.includes("Work_Button")) {
           showModal(modals.work);
