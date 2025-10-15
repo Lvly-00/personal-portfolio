@@ -20,7 +20,6 @@ import LoadingScreen from "./components/LoadingScreen.jsx";
 import UtilityToggles from "./components/UtilityToggles.jsx";
 
 export default function App() {
-  const canvasRef = useRef();
 
   useEffect(() => {
     /**  -------------------------- Audio setup -------------------------- */
@@ -118,7 +117,7 @@ export default function App() {
 
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color("#D9CAD1");
+    scene.background = new THREE.Color("#91be15ff");
 
     const camera = new THREE.PerspectiveCamera(
       35,

@@ -77,15 +77,15 @@ const ProjectsModal = () => {
                                             SleepyWears
                                         </a>
 
-                                    <a
-                                        className="contact-link"
-                                        href="https://github.com/Lvly-00/Sleepywear-Frontend"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <GitHubIcon />
+                                        <a
+                                            className="contact-link"
+                                            href="https://github.com/Lvly-00/Sleepywear-Frontend"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <GitHubIcon />
 
-                                    </a>
+                                        </a>
                                     </h2>
                                     <p className="modal-paragraph-text">
                                         "SleepyWears is a web application that helps small businesses manage inventory,
@@ -117,14 +117,14 @@ const ProjectsModal = () => {
                                         >
                                             Hi Baby!
                                         </a>
-                                    <a
-                                        className="contact-link"
-                                        href=" https://github.com/LVCCWAD/Hi_Baby-"
-                                        target="_blank"
-                                        rel="noopener noreferrer">
-                                        <GitHubIcon />
+                                        <a
+                                            className="contact-link"
+                                            href=" https://github.com/LVCCWAD/Hi_Baby-"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                            <GitHubIcon />
 
-                                    </a>
+                                        </a>
                                     </h2>
                                     <p className="modal-paragraph-text">
                                         "Hi Baby! — An e-commerce platform specializing in baby clothes, offering an
@@ -158,14 +158,14 @@ const ProjectsModal = () => {
                                         >
                                             Uniform Detection
                                         </a>
-                                    <a
-                                        className="contact-link"
-                                        href="https://github.com/7078-cj/Uniform-Detection"
-                                        target="_blank"
-                                        rel="noopener noreferrer">
-                                        <GitHubIcon />
+                                        <a
+                                            className="contact-link"
+                                            href="https://github.com/7078-cj/Uniform-Detection"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                            <GitHubIcon />
 
-                                    </a>
+                                        </a>
                                     </h2>
                                     <p className="modal-paragraph-text">
                                         "A smart system that scans student IDs to verify authenticity and uniform
@@ -197,14 +197,14 @@ const ProjectsModal = () => {
                                         >
                                             AguhEd
                                         </a>
-                                    <a
-                                        className="contact-link"
-                                        href="https://github.com/7078-cj/AguhED"
-                                        target="_blank"
-                                        rel="noopener noreferrer">
-                                        <GitHubIcon />
+                                        <a
+                                            className="contact-link"
+                                            href="https://github.com/7078-cj/AguhED"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                            <GitHubIcon />
 
-                                    </a>
+                                        </a>
                                     </h2>
                                     <p className="modal-paragraph-text">
                                         "An innovative platform that enhances learning through gesture control,
