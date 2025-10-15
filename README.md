@@ -1,4 +1,4 @@
-#  Personal Portfolio Website — My-Folio
+#  Personal Portfolio Website
 
 Welcome to my personal portfolio!  
 This website showcases my background, technical skills, projects, and professional experience.  
@@ -30,7 +30,7 @@ This portfolio consists of several key sections:
 ### 3. Contact 
 - Allows visitors to reach out via contact form, email, or social links (LinkedIn, GitHub, etc.).  
 - Ensures easy communication and networking opportunities.
-- 
+  
 ### 4. Resume 
 - A downloadable **PDF version** of my professional resume.  
 - Summarizes my experience, accomplishments, and core skills for quick review.
@@ -41,8 +41,8 @@ This portfolio consists of several key sections:
 
 This personal portfolio was built using the following technologies and libraries:
 
-- **React 19** – Core JavaScript library for creating dynamic, component-based interfaces.  
-- **Vite 7** – Modern build tool for fast and efficient development.  
+- **React JS** – Core JavaScript library for creating dynamic, component-based interfaces.  
+- **Vite** – Modern build tool for fast and efficient development.  
 - **Sass (SCSS)** – For advanced, modular styling with variables, nesting, and mixins.  
 - **Three.js** – Used for 3D rendering, interactive visuals, and immersive effects.  
 - **GSAP (GreenSock Animation Platform)** – For smooth, high-performance animations.  
@@ -92,20 +92,13 @@ Ensure that you have the following installed:
       ```bash
       npm run dev
 
-5. Open your browser and visit:
-         ```bash
-      http://localhost:5173/personal-portfolio/
+5. Open your browser and visit: http://localhost:5173/personal-portfolio/
 
 
 ### Deployment
-1. Build the project for production:
-         ```bash
-      npm run build
-
-3. Deploy the built files:
-         ```bash
+1. Deploy the built files:
+      ```bash
       npm run deploy
-
 
 ---
 
@@ -125,4 +118,3 @@ Feel free to connect with me:
 - **Email:** lovelypintes@gmail.com  
 - **LinkedIn:** [linkedin.com/in/lovely-pintes-3b40962bb](https://www.linkedin.com/in/lovely-pintes-3b40962bb/)  
 - **Facebook:** [facebook.com/lovely.pintes.2024](https://www.facebook.com/lovely.pintes.2024)  
-- **GitHub:** [github.com/Lvly-00](https://github.com/Lvly-00)
