@@ -41,7 +41,7 @@ const ContactModal = () => {
                   </svg>
                 </a>
 
-                s
+                
 
 
                 {/* GitHub Link */}
