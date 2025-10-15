@@ -64,8 +64,8 @@ const AboutMeModal = ({ onClose }) => {
                 work on improving my problem-solving skills and building real-world projects.
                 May or may not also catch me going for strolls around my neighbohrhood.
               </p>
-              
-           
+
+
 
               <h2 className="modal-divider">──────── ✦ ────────</h2>
 
@@ -129,33 +129,34 @@ const AboutMeModal = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Exit Button */}
-        <button className="modal-exit-button" onClick={onClose}>
-          <svg
-            width="98"
-            height="96"
-            viewBox="0 0 98 96"
-            className="exit-button-svg"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
-              fill="currentColor"
-            />
-            <rect
-              width="115.92"
-              height="17.889"
-              rx="8.94448"
-              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
+
       </div>
+      {/* Exit Button */}
+      <button className="modal-exit-button" onClick={onClose}>
+        <svg
+          width="98"
+          height="96"
+          viewBox="0 0 98 96"
+          className="exit-button-svg"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            width="115.92"
+            height="17.889"
+            rx="8.94448"
+            transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
+            fill="currentColor"
+          />
+          <rect
+            width="115.92"
+            height="17.889"
+            rx="8.94448"
+            transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
     </div >
   );
 };
