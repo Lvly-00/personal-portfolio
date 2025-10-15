@@ -21,7 +21,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href=""
                                             target="_blank"
@@ -31,6 +31,16 @@ const ProjectsModal = () => {
                                         >
                                             LOELSKIEE
                                         </a>
+                                        <a
+                                            className="contact-link"
+                                            href="https://github.com/Lvly-00"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <GitHubIcon />
+
+                                        </a>
+
 
 
                                     </h2>
@@ -39,15 +49,6 @@ const ProjectsModal = () => {
                                         and video editing services with galleries, service packages, and booking info."
                                     </p>
 
-                                    <a
-                                        className="contact-link"
-                                        href="https://github.com/Lvly-00"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <GitHubIcon />
-
-                                    </a>
 
                                 </div>
                             </div>
@@ -65,7 +66,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href="https://sleepywear-frontend.onrender.com/"
                                             target="_blank"
@@ -76,12 +77,6 @@ const ProjectsModal = () => {
                                             SleepyWears
                                         </a>
 
-                                    </h2>
-                                    <p className="modal-paragraph-text">
-                                        "SleepyWears is a web application that helps small businesses manage inventory,
-                                        track income, analyze revenue trends, and generate professional downloadable invoices
-                                        with an intuitive interface."
-                                    </p>
                                     <a
                                         className="contact-link"
                                         href="https://github.com/Lvly-00/Sleepywear-Frontend"
@@ -91,6 +86,12 @@ const ProjectsModal = () => {
                                         <GitHubIcon />
 
                                     </a>
+                                    </h2>
+                                    <p className="modal-paragraph-text">
+                                        "SleepyWears is a web application that helps small businesses manage inventory,
+                                        track income, analyze revenue trends, and generate professional downloadable invoices
+                                        with an intuitive interface."
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +107,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href="https://github.com/LVCCWAD/Hi_Baby-"
                                             target="_blank"
@@ -116,12 +117,6 @@ const ProjectsModal = () => {
                                         >
                                             Hi Baby!
                                         </a>
-                                    </h2>
-                                    <p className="modal-paragraph-text">
-                                        "Hi Baby! — An e-commerce platform specializing in baby clothes, offering an
-                                        easy-to-use shopping experience with product browsing, secure checkout, and
-                                        order management for parents."
-                                    </p>
                                     <a
                                         className="contact-link"
                                         href=" https://github.com/LVCCWAD/Hi_Baby-"
@@ -130,6 +125,12 @@ const ProjectsModal = () => {
                                         <GitHubIcon />
 
                                     </a>
+                                    </h2>
+                                    <p className="modal-paragraph-text">
+                                        "Hi Baby! — An e-commerce platform specializing in baby clothes, offering an
+                                        easy-to-use shopping experience with product browsing, secure checkout, and
+                                        order management for parents."
+                                    </p>
 
 
                                 </div>
@@ -147,7 +148,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href=""
                                             target="_blank"
@@ -157,11 +158,6 @@ const ProjectsModal = () => {
                                         >
                                             Uniform Detection
                                         </a>
-                                    </h2>
-                                    <p className="modal-paragraph-text">
-                                        "A smart system that scans student IDs to verify authenticity and uniform
-                                        completeness, automatically disabling on wash days when uniforms aren’t required."
-                                    </p>
                                     <a
                                         className="contact-link"
                                         href="https://github.com/7078-cj/Uniform-Detection"
@@ -170,6 +166,11 @@ const ProjectsModal = () => {
                                         <GitHubIcon />
 
                                     </a>
+                                    </h2>
+                                    <p className="modal-paragraph-text">
+                                        "A smart system that scans student IDs to verify authenticity and uniform
+                                        completeness, automatically disabling on wash days when uniforms aren’t required."
+                                    </p>
 
                                 </div>
                             </div>
@@ -186,7 +187,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href=""
                                             target="_blank"
@@ -196,11 +197,6 @@ const ProjectsModal = () => {
                                         >
                                             AguhEd
                                         </a>
-                                    </h2>
-                                    <p className="modal-paragraph-text">
-                                        "An innovative platform that enhances learning through gesture control,
-                                        AI-powered features, and sign language translation for a more inclusive, interactive experience.
-                                    </p>
                                     <a
                                         className="contact-link"
                                         href="https://github.com/7078-cj/AguhED"
@@ -209,6 +205,11 @@ const ProjectsModal = () => {
                                         <GitHubIcon />
 
                                     </a>
+                                    </h2>
+                                    <p className="modal-paragraph-text">
+                                        "An innovative platform that enhances learning through gesture control,
+                                        AI-powered features, and sign language translation for a more inclusive, interactive experience.
+                                    </p>
 
 
                                 </div>
@@ -216,7 +217,7 @@ const ProjectsModal = () => {
                         </div>
 
 
-                        <h2 className="modal-paragraph-header">──────── ✦ ────────</h2>
+                        <h2 className="modal-divider">──────── ✦ ────────</h2>
 
 
                         <div className="work-project">
@@ -230,7 +231,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href="https://drive.google.com/drive/folders/1QqZQrz7KbAhhZjwX84hGcd7uG6FX80zK?fbclid=IwY2xjawNa4XJleHRuA2FlbQIxMQABHsakBsYS5JYCeXSr-po5ZtueRKOfG3fJNemQcDirA0Kas2pQuL5LHt4GjiMV_aem_NIGnsV4wh2rchEK3KsUFsw"
                                             target="_blank"
@@ -260,7 +261,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href="https://drive.google.com/drive/folders/1bnOhzptn2JIwy2215b5-784fZIgn6U67?fbclid=IwY2xjawNa6txleHRuA2FlbQIxMQABHhJ237NMW8zlwzCC68FaZq7GbIX0nds6Hv2ceV8X7GH_J8_ztsJEy4H8K8_K_aem_gIxyGeGYBJyXy-9h_NvyQA"
                                             target="_blank"
@@ -291,7 +292,7 @@ const ProjectsModal = () => {
                                     />
                                 </div>
                                 <div className="paragraph-section">
-                                    <h2 className="modal-paragraph-header">
+                                    <h2 className="modal-paragraph-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <a
                                             href="https://www.facebook.com/share/v/1A8gTBG8fr/"
                                             target="_blank"
@@ -303,9 +304,9 @@ const ProjectsModal = () => {
                                         </a>
                                     </h2>
                                     <p className="modal-paragraph-text">
-                                        "A gripping exploration of AI’s dual nature, envisioning both a dystopian future of 
+                                        "A gripping exploration of AI’s dual nature, envisioning both a dystopian future of
                                         unchecked dominance and a hopeful world where responsible innovation solves problems,
-                                         fuels creativity, and empowers communities."
+                                        fuels creativity, and empowers communities."
                                     </p>
 
                                 </div>
