@@ -4,7 +4,7 @@ const ContactModal = () => {
   return (
     <div className="contact modal">
       <div className="modal-wrapper">
-        <h1 className="modal-title">~ Say hello! ~</h1>
+        <h1 className="modal-title">~ Contact Me! ~</h1>
 
         <div className="modal-content">
           <div className="modal-content-wrapper">

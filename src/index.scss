@@ -337,7 +337,7 @@ ul {
     border: 8px solid vars.$base-maroon;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     @include media.media("<=tablet") {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
         padding: 10px 20px;
         width: 100%;
     }
@@ -369,11 +369,11 @@ ul {
 
 .modal-paragraph-header-2 {
     border-top: 2px solid vars.$base-maroon;
-    font-size: 1.2rem;
+    font-size: 2.5rem;
     padding-top: 24px;
     margin-bottom: 8px;
     @include media.media("<=tablet") {
-        font-size: 1.3rem;
+        font-size: 2.3rem;
     }
 }
 
@@ -437,7 +437,7 @@ ul {
     overflow: visible;
     @include media.media("<=tablet") {
         overflow: visible;
-        height: 170px;
+        height: 230px;
     }
 }
 
