@@ -607,6 +607,7 @@ ul {
         transform: rotate(-5deg) scale(1.3);
     }
     @include media.media("<=tablet") {
+        stroke: currentColor;
         top: 30px;
         right: 96px;
         width: 65px;
@@ -619,6 +620,7 @@ ul {
     height: 40px;
     stroke: vars.$base-maroon;
     @include media.media("<=tablet") {
+        stroke: currentColor;
         width: 65px;
         height: 65px;
     }
@@ -673,6 +675,7 @@ ul {
     height: 40px;
     stroke: vars.$base-maroon;
     @include media.media("<=tablet") {
+        stroke: currentColor;
         width: 30px;
         height: 30px;
     }
@@ -684,6 +687,7 @@ ul {
     stroke: vars.$base-maroon;
     display: none;
     @include media.media("<=tablet") {
+        stroke: currentColor;
         width: 30px;
         height: 30px;
     }
